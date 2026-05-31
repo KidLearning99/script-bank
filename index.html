@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Enterprise IT Script Bank</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
@@ -14,331 +14,363 @@
 <style>
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
-:root,[data-theme="dark"]{--bg:#0d1117;--surface:#161b22;--surface-2:#1c2128;--surface-3:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--text-faint:#484f58;--primary:#58a6ff;--primary-dim:#1f6feb;--green:#3fb950;--orange:#d29922;--purple:#bc8cff;--cyan:#39c5cf;--red:#f85149;--font-mono:'JetBrains Mono',monospace;--font-body:'Inter',system-ui,sans-serif;--radius:8px;--radius-lg:12px;--shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3)}
-[data-theme="light"]{--bg:#f6f8fa;--surface:#fff;--surface-2:#f6f8fa;--surface-3:#eaeef2;--border:#d0d7de;--text:#1f2328;--text-muted:#656d76;--text-faint:#9198a1;--primary:#0969da;--primary-dim:#218bff;--green:#1a7f37;--orange:#9a6700;--purple:#8250df;--cyan:#1b7c83;--red:#d1242f;--shadow:0 1px 3px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.06)}
-body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
-.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
-header{border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:20}
-.hbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap}
-.logo{display:flex;align-items:center;gap:12px}
-.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary-dim),var(--purple));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px}
-.logo-text{font-weight:700;font-size:16px}
-.logo-sub{font-size:11px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.05em}
-.hactions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
-.btn{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:140ms}
-.btn:hover{border-color:var(--primary)}
-.badge{font-family:var(--font-mono);font-size:12px}
-.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--text-faint);display:inline-block}
-.badge .dot.ok{background:var(--green)}.badge .dot.warn{background:var(--orange)}.badge .dot.err{background:var(--red)}
-.hero{padding:40px 0 20px;text-align:center}
-.hero h1{font-size:32px;font-weight:700;line-height:1.2;margin-bottom:10px}
-.hero p{color:var(--text-muted);max-width:640px;margin:0 auto 22px;font-size:15px}
-.stats{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
-.stat b{display:block;font-size:26px;font-weight:700;color:var(--primary)}
-.stat span{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
-.controls{position:sticky;top:67px;background:var(--bg);padding:16px 0 10px;z-index:10}
-.search input{width:100%;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px}
+:root,[data-theme="dark"]{--bg:#0a0d12;--bg2:#0d1117;--surface:#141a22;--surface-2:#1a212b;--surface-3:#222a35;--border:#2a323d;--border-2:#39434f;--text:#e8eef5;--text-muted:#8b97a6;--text-faint:#576070;--primary:#6cb6ff;--primary-dim:#2f81f7;--accent:#bc8cff;--green:#3fb950;--orange:#e3a008;--red:#f85149;--cyan:#39c5cf;--font-mono:'JetBrains Mono',monospace;--font-body:'Inter',system-ui,sans-serif;--radius:10px;--radius-lg:14px;--shadow:0 4px 24px rgba(0,0,0,.4);--grad:linear-gradient(135deg,#2f81f7,#bc8cff)}
+[data-theme="light"]{--bg:#eef1f5;--bg2:#f6f8fa;--surface:#fff;--surface-2:#f3f5f8;--surface-3:#e9edf2;--border:#dce1e8;--border-2:#c7cfda;--text:#1a2027;--text-muted:#5a6573;--text-faint:#97a0ad;--primary:#0969da;--primary-dim:#0969da;--accent:#8250df;--green:#1a7f37;--orange:#9a6700;--red:#d1242f;--cyan:#1b7c83;--shadow:0 4px 24px rgba(80,90,110,.16);--grad:linear-gradient(135deg,#0969da,#8250df)}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+a{color:var(--primary)}
+.app{display:grid;grid-template-columns:248px 1fr;min-height:100vh}
+/* sidebar */
+.side{background:var(--bg2);border-right:1px solid var(--border);position:sticky;top:0;height:100vh;overflow-y:auto;display:flex;flex-direction:column;padding:18px 14px}
+.brand{display:flex;align-items:center;gap:11px;padding:4px 6px 16px}
+.brand .ic{width:38px;height:38px;border-radius:10px;background:var(--grad);display:flex;align-items:center;justify-content:center;font-size:20px}
+.brand .t{font-weight:800;font-size:15px;line-height:1.1}
+.brand .s{font-size:10.5px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.04em}
+.nav-l{font-size:10px;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.12em;margin:14px 6px 7px}
+.nav-i{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;color:var(--text-muted);font-size:13px;font-weight:500;transition:120ms;border:1px solid transparent}
+.nav-i:hover{background:var(--surface);color:var(--text)}
+.nav-i.active{background:var(--surface-2);color:var(--text);border-color:var(--border)}
+.nav-i .ic{width:20px;text-align:center}
+.nav-i .n{margin-left:auto;font-family:var(--font-mono);font-size:11px;color:var(--text-faint)}
+.side-foot{margin-top:auto;display:flex;flex-direction:column;gap:8px;padding-top:14px;border-top:1px solid var(--border)}
+.sb{display:flex;align-items:center;gap:8px;padding:9px 11px;border-radius:8px;border:1px solid var(--border);background:var(--surface);color:var(--text);font-size:13px;font-weight:500;cursor:pointer;width:100%;font-family:var(--font-body);text-decoration:none}
+.sb:hover{border-color:var(--primary)}
+.sb.primary{background:var(--grad);border:none;color:#fff;justify-content:center}
+/* main */
+.main{min-width:0}
+.topbar{position:sticky;top:0;z-index:15;background:color-mix(in srgb,var(--bg) 88%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:14px 28px;display:flex;gap:14px;align-items:center}
+.search{flex:1;position:relative}
+.search input{width:100%;padding:11px 14px 11px 38px;background:var(--surface);border:1px solid var(--border);border-radius:10px;color:var(--text);font-family:var(--font-body);font-size:14px}
 .search input:focus{outline:none;border-color:var(--primary)}
-.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
-.tab{font-size:12.5px;font-weight:500;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 13px;cursor:pointer;transition:140ms;display:inline-flex;gap:6px;align-items:center}
-.tab:hover{border-color:var(--primary);color:var(--text)}
-.tab.active{background:var(--primary-dim);border-color:var(--primary-dim);color:#fff}
-.tab .n{font-family:var(--font-mono);font-size:11px;opacity:.8}
-.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;padding:14px 0 56px}
-.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:140ms}
-.card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-2px)}
+.search .mag{position:absolute;left:13px;top:50%;transform:translateY(-50%);color:var(--text-faint)}
+.badge{font-family:var(--font-mono);font-size:11.5px;color:var(--text-muted);display:flex;align-items:center;gap:7px;white-space:nowrap}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--text-faint)}
+.dot.ok{background:var(--green)}.dot.warn{background:var(--orange)}.dot.err{background:var(--red)}
+.iconbtn{background:var(--surface);border:1px solid var(--border);color:var(--text);border-radius:9px;width:38px;height:38px;cursor:pointer;font-size:15px}
+.iconbtn:hover{border-color:var(--primary)}
+.content{padding:26px 28px 80px}
+.hero{margin-bottom:22px}
+.hero h1{font-size:27px;font-weight:800;letter-spacing:-.02em;margin-bottom:6px}
+.hero p{color:var(--text-muted);max-width:760px}
+.kpis{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}
+.kpi{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:13px 18px;min-width:120px}
+.kpi b{display:block;font-size:23px;font-weight:800;background:var(--grad);-webkit-background-clip:text;background-clip:text;-webkit-text-fill-color:transparent}
+.kpi span{font-size:11px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.07em}
+.sec-title{font-size:12px;font-weight:700;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin:26px 0 4px}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:14px;margin-top:14px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px;cursor:pointer;transition:140ms;display:flex;flex-direction:column;gap:9px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;left:0;top:0;height:100%;width:3px;background:var(--grad);opacity:0;transition:140ms}
+.card:hover{border-color:var(--border-2);transform:translateY(-2px);box-shadow:var(--shadow)}
+.card:hover::before{opacity:1}
 .card-top{display:flex;align-items:center;gap:10px}
-.card-icon{width:32px;height:32px;border-radius:8px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
-.card-domain{font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
-.card-name{font-family:var(--font-mono);font-weight:600;font-size:13.5px;color:var(--text);word-break:break-all}
+.card-ic{width:34px;height:34px;border-radius:9px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.card-dom{font-size:10px;color:var(--text-faint);text-transform:uppercase;letter-spacing:.05em}
+.card-name{font-family:var(--font-mono);font-weight:600;font-size:13px;word-break:break-all;line-height:1.3}
 .card-syn{color:var(--text-muted);font-size:12.5px;flex:1}
 .tags{display:flex;gap:6px;flex-wrap:wrap}
-.tag{font-size:10.5px;font-family:var(--font-mono);padding:2px 8px;border-radius:20px;border:1px solid var(--border);color:var(--text-muted)}
-.tag.type{color:var(--cyan);border-color:var(--cyan)}
-.tag.ro{color:var(--green);border-color:var(--green)}
-.tag.guide{color:var(--purple);border-color:var(--purple)}
-.sec-title{font-size:12px;font-weight:600;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin:24px 0 2px}
-footer{border-top:1px solid var(--border);padding:22px 0;color:var(--text-faint);font-size:12px;text-align:center;font-family:var(--font-mono)}
-/* modal viewer */
-.modal{position:fixed;inset:0;background:rgba(1,4,9,.7);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.tag{font-size:10px;font-family:var(--font-mono);padding:3px 8px;border-radius:20px;border:1px solid var(--border-2);color:var(--text-muted)}
+.tag.type{color:var(--cyan);border-color:color-mix(in srgb,var(--cyan) 45%,var(--border))}
+.tag.ro{color:var(--green);border-color:color-mix(in srgb,var(--green) 45%,var(--border))}
+.tag.guide{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,var(--border))}
+.tag.com{color:var(--orange);border-color:color-mix(in srgb,var(--orange) 45%,var(--border))}
+.empty{color:var(--text-muted);padding:40px 6px;text-align:center}
+/* modal */
+.modal{position:fixed;inset:0;background:rgba(3,6,11,.66);backdrop-filter:blur(4px);display:none;align-items:center;justify-content:center;z-index:60;padding:22px}
 .modal.open{display:flex}
-.viewer{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);width:min(960px,100%);max-height:88vh;display:flex;flex-direction:column;box-shadow:var(--shadow)}
-.v-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
-.v-title{font-family:var(--font-mono);font-weight:600;font-size:14px;word-break:break-all}
-.v-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}
-.v-actions{display:flex;gap:8px;flex-shrink:0}
-.v-body{overflow:auto;padding:0}
-.v-body pre{margin:0}
-.v-body pre code{font-family:var(--font-mono);font-size:12.5px;line-height:1.55;padding:18px!important;display:block}
-.v-body .md{padding:22px 26px}
-.v-body .md h1{font-size:20px;margin:.2em 0 .5em}.v-body .md h2{font-size:16px;margin:1em 0 .4em}
-.v-body .md ol,.v-body .md ul{margin:.4em 0 .8em 1.4em}.v-body .md li{margin:.25em 0}
-.v-body .md code{background:var(--surface-3);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12.5px}
-.v-body .md blockquote{border-left:3px solid var(--border);padding-left:12px;color:var(--text-muted);margin:.6em 0}
-.empty{color:var(--text-muted);padding:30px 4px}
-
-/* AI chat */
-.chat-fab{position:fixed;right:22px;bottom:22px;z-index:40;background:linear-gradient(135deg,var(--primary-dim),var(--purple));color:#fff;border:none;border-radius:30px;padding:13px 20px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;gap:8px;align-items:center}
+.sheet{background:var(--surface);border:1px solid var(--border);border-radius:16px;width:min(1000px,100%);max-height:90vh;display:flex;flex-direction:column;box-shadow:var(--shadow);overflow:hidden}
+.sheet-h{display:flex;justify-content:space-between;align-items:flex-start;gap:14px;padding:18px 22px;border-bottom:1px solid var(--border)}
+.sheet-h .ttl{font-family:var(--font-mono);font-weight:700;font-size:16px;word-break:break-all}
+.sheet-h .sub{font-size:12px;color:var(--text-muted);margin-top:3px}
+.sheet-actions{display:flex;gap:8px;flex-shrink:0}
+.sheet-b{overflow:auto;padding:0}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:14px;padding:20px 22px;border-bottom:1px solid var(--border)}
+.meta .full{grid-column:1/-1}
+.meta h4{font-size:10.5px;text-transform:uppercase;letter-spacing:.08em;color:var(--text-faint);margin-bottom:4px;font-weight:700}
+.meta p,.meta code{font-size:13px;color:var(--text)}
+.meta code{font-family:var(--font-mono);background:var(--surface-2);padding:2px 7px;border-radius:6px;font-size:12px;word-break:break-all}
+.meta .desc{color:var(--text-muted);line-height:1.6}
+pre.code{margin:0}
+pre.code code{font-family:var(--font-mono);font-size:12.5px;line-height:1.55;padding:20px!important;display:block}
+.md{padding:22px 26px}.md h1{font-size:20px;margin:.1em 0 .5em}.md h2{font-size:16px;margin:1em 0 .4em}
+.md ol,.md ul{margin:.4em 0 .8em 1.4em}.md li{margin:.25em 0}.md code{background:var(--surface-3);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12.5px}
+.md blockquote{border-left:3px solid var(--border-2);padding-left:12px;color:var(--text-muted);margin:.6em 0}
+/* forms */
+.form{padding:20px 22px;display:flex;flex-direction:column;gap:13px;overflow:auto}
+.form label{font-size:12px;font-weight:600;color:var(--text-muted);display:block;margin-bottom:5px}
+.form input,.form select,.form textarea{width:100%;background:var(--bg2);border:1px solid var(--border);border-radius:9px;color:var(--text);padding:10px 12px;font-family:var(--font-body);font-size:13.5px}
+.form textarea{font-family:var(--font-mono);font-size:12.5px;min-height:200px;resize:vertical}
+.form input:focus,.form select:focus,.form textarea:focus{outline:none;border-color:var(--primary)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.hint{font-size:11px;color:var(--text-faint);line-height:1.5}
+.note-ok{color:var(--green)}.note-err{color:var(--red)}
+/* chat */
+.chat-fab{position:fixed;right:22px;bottom:22px;z-index:40;background:var(--grad);color:#fff;border:none;border-radius:30px;padding:13px 20px;font-family:var(--font-body);font-weight:700;font-size:14px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;gap:8px;align-items:center}
 .chat-fab:hover{filter:brightness(1.08)}
-.chat-panel{position:fixed;right:0;top:0;height:100vh;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--border);box-shadow:var(--shadow);z-index:60;display:none;flex-direction:column;transform:translateX(8px)}
-.chat-panel.open{display:flex}
-.chat-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
-.chat-head .t{font-weight:700;font-size:15px;display:flex;gap:8px;align-items:center}
-.chat-head .s{font-size:11px;color:var(--text-muted);font-family:var(--font-mono)}
+.chat{position:fixed;right:0;top:0;height:100vh;width:min(430px,100%);background:var(--surface);border-left:1px solid var(--border);z-index:70;display:none;flex-direction:column;box-shadow:var(--shadow)}
+.chat.open{display:flex}
+.chat-h{display:flex;justify-content:space-between;align-items:center;padding:15px 17px;border-bottom:1px solid var(--border)}
+.chat-h .t{font-weight:700;display:flex;gap:8px;align-items:center}
+.chat-h .s{font-size:10.5px;color:var(--text-muted);font-family:var(--font-mono)}
 .chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
-.msg{max-width:92%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+.msg{max-width:92%;padding:10px 13px;border-radius:13px;font-size:13.5px;line-height:1.55;word-wrap:break-word}
 .msg.user{align-self:flex-end;background:var(--primary-dim);color:#fff;border-bottom-right-radius:4px}
 .msg.bot{align-self:flex-start;background:var(--surface-2);border:1px solid var(--border);border-bottom-left-radius:4px}
-.msg.bot code{background:var(--surface-3);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12px}
-.msg.bot pre{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;overflow:auto;margin:8px 0}
-.msg.bot pre code{background:none;padding:0}
-.msg.sys{align-self:center;color:var(--text-muted);font-size:12px;text-align:center}
-.chat-foot{border-top:1px solid var(--border);padding:12px}
+.msg.bot pre{background:var(--bg2);border:1px solid var(--border);border-radius:8px;padding:11px;overflow:auto;margin:8px 0}
+.msg.bot code{font-family:var(--font-mono);font-size:12px}
+.msg.sys{align-self:center;color:var(--text-muted);font-size:12px;text-align:center;max-width:100%}
+.chat-f{border-top:1px solid var(--border);padding:12px}
 .chat-row{display:flex;gap:8px}
-.chat-row textarea{flex:1;resize:none;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:9px 11px;font-family:var(--font-body);font-size:13.5px;max-height:120px}
+.chat-row textarea{flex:1;resize:none;background:var(--bg2);border:1px solid var(--border);border-radius:10px;color:var(--text);padding:10px 12px;font-family:var(--font-body);font-size:13.5px;max-height:120px}
 .chat-row textarea:focus{outline:none;border-color:var(--primary)}
-.chat-send{background:var(--primary-dim);color:#fff;border:none;border-radius:var(--radius);padding:0 14px;cursor:pointer;font-weight:600}
-.chat-send:disabled{opacity:.5;cursor:not-allowed}
-.keybar{display:flex;gap:8px;margin-bottom:8px}
-.keybar input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:8px 10px;font-family:var(--font-mono);font-size:12px}
-.keybar input:focus{outline:none;border-color:var(--primary)}
-.chat-note{font-size:10.5px;color:var(--text-faint);margin-top:7px;line-height:1.4}
-.chat-note a{color:var(--primary)}
-.modelpick{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:4px 6px}
-@media(max-width:600px){.chat-panel{width:100%}}
-@media(max-width:600px){.hero h1{font-size:25px}}
+.chat-send{background:var(--grad);color:#fff;border:none;border-radius:10px;padding:0 15px;cursor:pointer;font-weight:700}
+.chat-send:disabled{opacity:.5}
+.chip{font-family:var(--font-mono);font-size:10.5px;color:var(--text-muted);margin-top:8px;display:flex;justify-content:space-between;gap:8px}
+@media(max-width:860px){.app{grid-template-columns:1fr}.side{position:fixed;left:0;top:0;z-index:80;transform:translateX(-100%);transition:200ms;width:260px}.side.open{transform:none}.menu-toggle{display:inline-flex!important}.meta{grid-template-columns:1fr}}
+.menu-toggle{display:none}
 </style>
 </head>
 <body>
-<header><div class="wrap hbar">
-  <div class="logo"><div class="logo-icon">&#9889;</div>
-    <div><div class="logo-text">Enterprise IT Script Bank</div><div class="logo-sub">AI-MAINTAINED &middot; v3.0</div></div>
-  </div>
-  <div class="hactions">
-    <a class="btn badge" id="status-badge" href="agent/last_run.md" target="_blank" rel="noopener" title="Last auto-update run"><span class="dot" id="status-dot"></span><span id="status-text">checking&hellip;</span></a>
-    <a class="btn" id="repo-link" href="https://github.com/KidLearning99/script-bank" target="_blank" rel="noopener">&#11088; GitHub</a>
-    <button class="btn" id="theme-toggle">&#127769;</button>
-  </div>
-</div></header>
-
-<div class="wrap">
-  <section class="hero">
-    <h1>Production-ready PowerShell, Graph &amp; Bash scripts</h1>
-    <p>A large, source-cited, read-only library across seven enterprise IT domains. Click any script to read it in full with syntax highlighting and one-click copy. Source links are checked daily by an automated agent.</p>
-    <div class="stats">
-      <div class="stat"><b id="stat-scripts">0</b><span>Scripts</span></div>
-      <div class="stat"><b>7</b><span>Domains</span></div>
-      <div class="stat"><b id="stat-runbooks">0</b><span>Runbooks</span></div>
-      <div class="stat"><b>Daily</b><span>Source Check</span></div>
+<div class="app">
+  <!-- SIDEBAR -->
+  <aside class="side" id="side">
+    <div class="brand"><div class="ic">&#9889;</div><div><div class="t">Script Bank</div><div class="s">ENTERPRISE IT &middot; v4</div></div></div>
+    <div class="nav-l">Library</div>
+    <div id="nav"></div>
+    <div class="side-foot">
+      <button class="sb primary" id="open-upload">&#11014; Upload a script</button>
+      <button class="sb" id="open-settings">&#9881; Settings</button>
+      <a class="sb" id="repo-link" href="https://github.com/KidLearning99/script-bank" target="_blank" rel="noopener">&#11088; View on GitHub</a>
     </div>
-  </section>
+  </aside>
 
-  <div class="controls">
-    <div class="search"><input id="search" type="text" placeholder="Search 90+ scripts by name, purpose, or cmdlet&hellip;"></div>
-    <div class="tabs" id="tabs"></div>
-  </div>
-
-  <div id="scripts-wrap">
-    <div class="grid" id="grid"></div>
-  </div>
-
-  <div id="runbooks-wrap">
-    <div class="sec-title">Step-by-step Runbooks</div>
-    <div class="grid" id="rgrid"></div>
-  </div>
-</div>
-
-<footer>Enterprise IT Script Bank &middot; <span id="cnt">&mdash;</span> scripts &middot; Generated <span id="gen">&mdash;</span> &middot; All scripts read-only &amp; source-cited</footer>
-
-<!-- Viewer modal -->
-<div class="modal" id="modal">
-  <div class="viewer">
-    <div class="v-head">
-      <div><div class="v-title" id="v-title"></div><div class="v-meta" id="v-meta"></div></div>
-      <div class="v-actions">
-        <button class="btn" id="v-copy">&#128203; Copy</button>
-        <a class="btn" id="v-raw" target="_blank" rel="noopener">Raw</a>
-        <button class="btn" id="v-close">&#10005;</button>
+  <!-- MAIN -->
+  <div class="main">
+    <div class="topbar">
+      <button class="iconbtn menu-toggle" id="menu-toggle">&#9776;</button>
+      <div class="search"><span class="mag">&#128269;</span><input id="search" type="text" placeholder="Search scripts by name, purpose, cmdlet or module&hellip;"></div>
+      <div class="badge"><span class="dot" id="dot"></span><span id="badge-txt">&hellip;</span></div>
+      <button class="iconbtn" id="theme">&#127769;</button>
+    </div>
+    <div class="content">
+      <div class="hero">
+        <h1 id="hero-title">All Scripts</h1>
+        <p id="hero-sub">A large, source-cited, read-only automation library. Click any script for a full description, required permissions, modules, an example, and the highlighted code with one-click copy.</p>
+        <div class="kpis">
+          <div class="kpi"><b id="k-scripts">0</b><span>Scripts</span></div>
+          <div class="kpi"><b>7</b><span>Domains</span></div>
+          <div class="kpi"><b id="k-runbooks">0</b><span>Runbooks</span></div>
+          <div class="kpi"><b>Read-only</b><span>100% safe</span></div>
+        </div>
       </div>
+      <div id="scripts-wrap"><div class="grid" id="grid"></div></div>
+      <div id="runbooks-wrap"><div class="sec-title">Step-by-step Runbooks</div><div class="grid" id="rgrid"></div></div>
     </div>
-    <div class="v-body" id="v-body"></div>
   </div>
 </div>
 
-<script>
-const $=id=>document.getElementById(id);
-const htmlEl=document.documentElement, tBtn=$('theme-toggle');
-tBtn.addEventListener('click',()=>{const n=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';htmlEl.setAttribute('data-theme',n);tBtn.innerHTML=n==='dark'?'&#127769;':'&#9728;';});
+<!-- DETAIL MODAL -->
+<div class="modal" id="m-detail"><div class="sheet">
+  <div class="sheet-h"><div><div class="ttl" id="d-title"></div><div class="sub" id="d-sub"></div></div>
+    <div class="sheet-actions"><button class="sb" id="d-copy" style="width:auto">&#128203; Copy</button><a class="sb" id="d-raw" style="width:auto" target="_blank" rel="noopener">Raw</a><button class="iconbtn" id="d-close">&#10005;</button></div></div>
+  <div class="sheet-b" id="d-body"></div>
+</div></div>
 
-let SCRIPTS=[],RUNBOOKS=[],FILTER='all',Q='';
-function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
-function langOf(p){return p.endsWith('.sh')?'bash':p.endsWith('.md')?'markdown':'powershell';}
-
-function cardHtml(s){
-  return '<div class="card-top"><div class="card-icon">'+(s.icon||'\u{1F4C4}')+'</div>'
-    +'<div><div class="card-domain">'+s.domain+'</div><div class="card-name">'+s.name+'</div></div></div>'
-    +'<div class="card-syn">'+esc(s.synopsis)+'</div>'
-    +'<div class="tags"><span class="tag type">'+s.type+'</span>'
-    +(s.readonly&&s.type!=='Runbook'?'<span class="tag ro">read-only</span>':'')
-    +(s.type==='Runbook'?'<span class="tag guide">guide</span>':'')+'</div>';
-}
-function makeCard(s){const a=document.createElement('div');a.className='card';a.innerHTML=cardHtml(s);a.onclick=()=>openViewer(s);return a;}
-function renderGrid(id,list){const g=$(id);g.innerHTML='';if(!list.length){g.innerHTML='<div class="empty">Nothing matches your search.</div>';return;}list.forEach(s=>g.appendChild(makeCard(s)));}
-
-function apply(){
-  const q=Q.toLowerCase();
-  const f=s=>(s.name+s.domain+s.synopsis+s.source+s.type).toLowerCase().includes(q);
-  let sc=SCRIPTS.filter(f); if(FILTER!=='all'&&FILTER!=='runbooks') sc=sc.filter(s=>s.domain===FILTER);
-  renderGrid('grid', FILTER==='runbooks'?[]:sc);
-  $('scripts-wrap').style.display = FILTER==='runbooks'?'none':'block';
-  const rb=RUNBOOKS.filter(f);
-  renderGrid('rgrid', (FILTER==='all'||FILTER==='runbooks')?rb:[]);
-  $('runbooks-wrap').style.display = (FILTER==='all'||FILTER==='runbooks')&&rb.length?'block':'none';
-}
-$('search').addEventListener('input',e=>{Q=e.target.value;apply();});
-
-function buildTabs(){
-  const counts={}; SCRIPTS.forEach(s=>counts[s.domain]=(counts[s.domain]||0)+1);
-  const domains=Object.keys(counts).sort();
-  const tabs=[['all','All','&#9776;',SCRIPTS.length]];
-  domains.forEach(d=>tabs.push([d,d,(SCRIPTS.find(s=>s.domain===d)||{}).icon||'',counts[d]]));
-  tabs.push(['runbooks','Runbooks','\u{1F4CB}',RUNBOOKS.length]);
-  const t=$('tabs');t.innerHTML='';
-  tabs.forEach(([key,label,icon,n])=>{
-    const b=document.createElement('div');b.className='tab'+(key===FILTER?' active':'');
-    b.innerHTML=(icon?icon+' ':'')+esc(label)+' <span class="n">'+n+'</span>';
-    b.onclick=()=>{FILTER=key;[...t.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');apply();window.scrollTo({top:0,behavior:'smooth'});};
-    t.appendChild(b);
-  });
-}
-
-// ---- viewer ----
-const modal=$('modal');
-function closeV(){modal.classList.remove('open');}
-$('v-close').onclick=closeV; modal.onclick=e=>{if(e.target===modal)closeV();};
-document.addEventListener('keydown',e=>{if(e.key==='Escape')closeV();});
-let curText='';
-$('v-copy').onclick=()=>{navigator.clipboard.writeText(curText).then(()=>{$('v-copy').innerHTML='&#10003; Copied';setTimeout(()=>$('v-copy').innerHTML='&#128203; Copy',1800);});};
-function openViewer(s){
-  $('v-title').textContent=s.name;
-  $('v-meta').innerHTML=esc(s.domain)+' &middot; '+s.type+(s.readonly&&s.type!=='Runbook'?' &middot; read-only':'')+' &middot; source: '+esc(s.source);
-  $('v-raw').href=s.path;
-  const body=$('v-body');body.innerHTML='<pre><code>Loading&hellip;</code></pre>';
-  modal.classList.add('open');
-  fetch(s.path).then(r=>r.text()).then(txt=>{
-    curText=txt;
-    if(langOf(s.path)==='markdown'&&window.marked){body.innerHTML='<div class="md">'+marked.parse(txt)+'</div>';}
-    else{const lang=langOf(s.path);body.innerHTML='<pre><code class="language-'+lang+'"></code></pre>';
-      const code=body.querySelector('code');code.textContent=txt;if(window.hljs)hljs.highlightElement(code);}
-    body.scrollTop=0;
-  }).catch(()=>{body.innerHTML='<div class="empty">Could not load file.</div>';});
-}
-
-function setBadge(cls,text){$('status-dot').className='dot '+cls;$('status-text').textContent=text;}
-fetch('scripts/manifest.json').then(r=>r.json()).then(d=>{
-  SCRIPTS=d.scripts||[];RUNBOOKS=d.runbooks||[];
-  $('stat-scripts').textContent=SCRIPTS.length;$('stat-runbooks').textContent=RUNBOOKS.length;
-  $('cnt').textContent=SCRIPTS.length;$('gen').textContent=d.generated||'';
-  buildTabs();apply();setBadge('ok','Updated '+(d.generated||''));
-}).catch(()=>{$('grid').innerHTML='<div class="empty">Could not load manifest.json.</div>';});
-
-fetch('agent/last_run.md').then(r=>r.ok?r.text():Promise.reject()).then(md=>{
-  const g=re=>{const m=md.match(re);return m?parseInt(m[1],10):0;};
-  const dm=md.match(/run\s*[-–]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/);const date=dm?dm[1]:'';
-  const broken=g(/Broken sources:\s*\*\*(\d+)/),changed=g(/Changed sources:\s*\*\*(\d+)/);
-  if(broken)setBadge('err','Updated '+date+' · '+broken+' broken');
-  else if(changed)setBadge('warn','Updated '+date+' · '+changed+' changed');
-  else setBadge('ok','All sources OK · '+date);
-}).catch(()=>{});
-
-// ===== AI CHAT (free OpenRouter models, browser-side, user's own key) =====
-const CHAT_MODELS_DEFAULT=['minimax/minimax-m2.5:free','moonshotai/kimi-k2.6:free'];
-const chatPanel=$('chat-panel'), chatMsgs=$('chat-msgs'), chatInput=$('chat-input');
-let chatHistory=[], catalogText='';
-function orKey(){return localStorage.getItem('or_key')||'';}
-function refreshKeyBar(){ const has=!!orKey(); $('keybar').style.display=has?'none':'flex'; if(has)$('or-key').value=''; }
-$('key-save').onclick=()=>{const v=$('or-key').value.trim(); if(v){localStorage.setItem('or_key',v); refreshKeyBar(); addMsg('sys','Key saved in your browser. Ask away.');}};
-$('chat-fab').onclick=()=>{chatPanel.classList.add('open'); refreshKeyBar(); if(!chatHistory.length) addMsg('bot','Hi! I can help you find and explain scripts in this bank, or write new read-only PowerShell / Graph / Bash. What do you need?'); chatInput.focus();};
-$('chat-close').onclick=()=>chatPanel.classList.remove('open');
-chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}});
-chatInput.addEventListener('input',()=>{chatInput.style.height='auto';chatInput.style.height=Math.min(chatInput.scrollHeight,120)+'px';});
-$('chat-send').onclick=sendChat;
-
-function addMsg(role,text){const d=document.createElement('div');d.className='msg '+role;
-  if(role==='bot'&&window.marked){d.innerHTML=marked.parse(text);} else {d.textContent=text;}
-  chatMsgs.appendChild(d);chatMsgs.scrollTop=chatMsgs.scrollHeight;return d;}
-
-function buildCatalog(){
-  if(catalogText) return catalogText;
-  const lines=SCRIPTS.map(s=>`- ${s.name} [${s.domain}, ${s.type}]: ${s.synopsis} (source: ${s.source})`);
-  catalogText='AVAILABLE SCRIPTS IN THIS BANK ('+SCRIPTS.length+'):\n'+lines.join('\n');
-  return catalogText;
-}
-function systemPrompt(){
-  return 'You are the Enterprise IT Script Bank assistant. You help IT admins find, explain, and adapt scripts. '
-  +'All scripts in this bank are READ-ONLY (reporting/diagnostics; no Set/Remove/New/Disable). '
-  +'When you write new scripts, keep them read-only, include comment-based help, least-privilege Graph scopes, '
-  +'error handling, and cite a learn.microsoft.com source. Prefer recommending an existing script from the catalog '
-  +'below when one fits, naming it exactly and noting its domain. Be concise and use Markdown.\n\n'+buildCatalog();
-}
-
-async function callOR(models,messages){
-  let lastErr='';
-  for(const model of models){
-    try{
-      const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',
-        headers:{'Authorization':'Bearer '+orKey(),'Content-Type':'application/json',
-          'HTTP-Referer':location.origin,'X-Title':'Enterprise IT Script Bank'},
-        body:JSON.stringify({model,messages,max_tokens:1500})});
-      if(!r.ok){lastErr='HTTP '+r.status+' on '+model+(r.status===401?' (check your key)':''); continue;}
-      const d=await r.json(); const t=d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
-      if(t){$('chat-model').textContent=model.split('/').pop(); return t;}
-    }catch(e){lastErr=String(e);}
-  }
-  throw new Error(lastErr||'all free models failed');
-}
-
-async function sendChat(){
-  const text=chatInput.value.trim(); if(!text) return;
-  if(!orKey()){addMsg('sys','Paste your free OpenRouter key above first.');return;}
-  addMsg('user',text); chatInput.value=''; chatInput.style.height='auto';
-  chatHistory.push({role:'user',content:text});
-  const thinking=addMsg('bot','…'); $('chat-send').disabled=true;
-  const models=$('model-pick').value.split(',');
-  const msgs=[{role:'system',content:systemPrompt()}].concat(chatHistory.slice(-8));
-  try{
-    const reply=await callOR(models,msgs);
-    thinking.innerHTML=window.marked?marked.parse(reply):reply;
-    chatHistory.push({role:'assistant',content:reply});
-  }catch(e){ thinking.className='msg sys'; thinking.textContent='Error: '+e.message; }
-  finally{ $('chat-send').disabled=false; chatMsgs.scrollTop=chatMsgs.scrollHeight; }
-}
-
-</script>
-
-<button class="chat-fab" id="chat-fab">&#129302; Ask AI</button>
-<aside class="chat-panel" id="chat-panel">
-  <div class="chat-head">
-    <div><div class="t">&#129302; Script Bank AI</div><div class="s" id="chat-model">free models</div></div>
-    <button class="btn" id="chat-close">&#10005;</button>
+<!-- UPLOAD MODAL -->
+<div class="modal" id="m-upload"><div class="sheet">
+  <div class="sheet-h"><div><div class="ttl">&#11014; Upload a script</div><div class="sub">Read-only scripts only. Submitted scripts are checked for destructive commands.</div></div><button class="iconbtn" id="u-close">&#10005;</button></div>
+  <div class="form">
+    <div class="row2">
+      <div><label>Domain</label><select id="u-domain">
+        <option value="01-IT-Support-Troubleshooting">General IT Troubleshooting</option>
+        <option value="02-Entra-ID-Management">Entra ID (Azure AD)</option>
+        <option value="03-Intune-DeviceManagement">Intune &amp; Device Mgmt</option>
+        <option value="04-ActiveDirectory">Active Directory</option>
+        <option value="05-WindowsServer">Windows Server</option>
+        <option value="06-ExchangeOnline">Exchange Online</option>
+        <option value="07-Linux-Servers">Linux Server Mgmt</option></select></div>
+      <div><label>File name</label><input id="u-name" placeholder="Get-MyReport.ps1 or my_report.sh"></div>
+    </div>
+    <div class="row2">
+      <div><label>Type</label><select id="u-type"><option>PowerShell</option><option>Graph SDK</option><option>Bash</option></select></div>
+      <div><label>Source URL (optional)</label><input id="u-source" placeholder="learn.microsoft.com/..."></div>
+    </div>
+    <div><label>One-line summary</label><input id="u-syn" placeholder="What does it report?"></div>
+    <div><label>Description</label><textarea id="u-desc" style="min-height:70px" placeholder="A few sentences: what it does, what it returns, prerequisites."></textarea></div>
+    <div><label>Script content</label><textarea id="u-content" placeholder="Paste the full script here..."></textarea></div>
+    <div id="u-msg" class="hint"></div>
+    <div style="display:flex;gap:10px;flex-wrap:wrap">
+      <button class="sb primary" id="u-submit" style="width:auto">Submit</button>
+      <button class="sb" id="u-download" style="width:auto">&#11015; Download file instead</button>
+    </div>
+    <div class="hint" id="u-hint"></div>
   </div>
+</div></div>
+
+<!-- SETTINGS MODAL -->
+<div class="modal" id="m-settings"><div class="sheet" style="width:min(560px,100%)">
+  <div class="sheet-h"><div><div class="ttl">&#9881; Settings</div><div class="sub">Connect the secure Worker so chat &amp; upload work without exposing any key.</div></div><button class="iconbtn" id="s-close">&#10005;</button></div>
+  <div class="form">
+    <div><label>Worker URL (recommended &mdash; keeps the API key private)</label><input id="s-worker" placeholder="https://script-bank-proxy.<you>.workers.dev"><div class="hint">Deploy the free Cloudflare Worker in <code>/worker</code> (see its README). With this set, the API key lives on the server and never in your browser.</div></div>
+    <div><label>Upload passcode (required to upload via the Worker)</label><input id="s-pass" type="password" placeholder="the UPLOAD_PASSCODE you set on the Worker"></div>
+    <hr style="border-color:var(--border)">
+    <div><label>OR &mdash; OpenRouter key (fallback, stored only in this browser)</label><input id="s-key" type="password" placeholder="sk-or-... (used only if no Worker URL)"><div class="hint">Use this only if you don't deploy the Worker. It stays in your browser's localStorage. Get one free at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>.</div></div>
+    <button class="sb primary" id="s-save" style="width:auto">Save settings</button>
+  </div>
+</div></div>
+
+<!-- CHAT -->
+<button class="chat-fab" id="chat-fab">&#129302; Ask AI</button>
+<aside class="chat" id="chat">
+  <div class="chat-h"><div><div class="t">&#129302; Script Bank AI</div><div class="s" id="chat-model">free models</div></div><button class="iconbtn" id="chat-close">&#10005;</button></div>
   <div class="chat-msgs" id="chat-msgs"></div>
-  <div class="chat-foot">
-    <div class="keybar" id="keybar">
-      <input id="or-key" type="password" placeholder="Paste your OpenRouter API key (sk-or-...)">
-      <button class="btn" id="key-save">Save</button>
-    </div>
-    <div class="chat-row">
-      <textarea id="chat-input" rows="1" placeholder="Ask for a script, e.g. 'report inactive Entra users'"></textarea>
-      <button class="chat-send" id="chat-send">&#10148;</button>
-    </div>
-    <select class="modelpick" id="model-pick" style="margin-top:8px;width:100%">
-      <option value="minimax/minimax-m2.5:free,moonshotai/kimi-k2.6:free">MiniMax M2.5 (free) &rarr; Kimi K2.6 (free) fallback</option>
-      <option value="moonshotai/kimi-k2.6:free,minimax/minimax-m2.5:free">Kimi K2.6 (free) &rarr; MiniMax M2.5 (free) fallback</option>
-    </select>
-    <div class="chat-note">Free models via OpenRouter. Your key is stored only in <b>this browser</b> (localStorage) and is never sent to the repo or anyone but OpenRouter. Get a free key at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>.</div>
+  <div class="chat-f">
+    <div class="chat-row"><textarea id="chat-input" rows="1" placeholder="e.g. 'which script reports inactive Entra users?'"></textarea><button class="chat-send" id="chat-send">&#10148;</button></div>
+    <div class="chip"><span id="chat-mode">not configured</span><a href="#" id="chat-cfg">configure</a></div>
   </div>
 </aside>
 
+<script>
+const $=id=>document.getElementById(id);
+const FREE=['minimax/minimax-m2.5:free','moonshotai/kimi-k2.6:free'];
+const cfg={get worker(){return localStorage.getItem('sb_worker')||''},get pass(){return localStorage.getItem('sb_pass')||''},get key(){return localStorage.getItem('or_key')||''}};
+const themeBtn=$('theme'),htmlEl=document.documentElement;
+themeBtn.onclick=()=>{const n=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';htmlEl.setAttribute('data-theme',n);themeBtn.innerHTML=n==='dark'?'&#127769;':'&#9728;';};
+$('menu-toggle').onclick=()=>$('side').classList.toggle('open');
+function esc(s){return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function lang(p){return p.endsWith('.sh')?'bash':p.endsWith('.md')?'markdown':'powershell';}
+
+let SCRIPTS=[],RUNBOOKS=[],FILTER='all',Q='';
+function tagFor(s){
+  let t='<span class="tag type">'+esc(s.type)+'</span>';
+  if(s.type==='Runbook')t+='<span class="tag guide">guide</span>';
+  else if(s.tier==='COMMUNITY')t+='<span class="tag com">community</span>';
+  else if(s.readonly)t+='<span class="tag ro">read-only</span>';
+  return t;
+}
+function card(s){const a=document.createElement('div');a.className='card';
+  a.innerHTML='<div class="card-top"><div class="card-ic">'+(s.icon||'\u{1F4C4}')+'</div><div><div class="card-dom">'+esc(s.domain)+'</div><div class="card-name">'+esc(s.name)+'</div></div></div>'
+    +'<div class="card-syn">'+esc(s.synopsis)+'</div><div class="tags">'+tagFor(s)+'</div>';
+  a.onclick=()=>openDetail(s);return a;}
+function fill(id,list){const g=$(id);g.innerHTML='';if(!list.length){g.innerHTML='<div class="empty">Nothing matches your search.</div>';return;}list.forEach(s=>g.appendChild(card(s)));}
+function apply(){
+  const q=Q.toLowerCase();
+  const f=s=>(s.name+s.domain+s.synopsis+(s.description||'')+(s.modules||'')+s.source+s.type).toLowerCase().includes(q);
+  let sc=SCRIPTS.filter(f);if(FILTER!=='all'&&FILTER!=='runbooks')sc=sc.filter(s=>s.domain===FILTER);
+  $('scripts-wrap').style.display=FILTER==='runbooks'?'none':'block';
+  fill('grid',FILTER==='runbooks'?[]:sc);
+  const rb=RUNBOOKS.filter(f);
+  $('runbooks-wrap').style.display=((FILTER==='all'||FILTER==='runbooks')&&rb.length)?'block':'none';
+  fill('rgrid',(FILTER==='all'||FILTER==='runbooks')?rb:[]);
+}
+$('search').addEventListener('input',e=>{Q=e.target.value;apply();});
+function buildNav(){
+  const counts={};SCRIPTS.forEach(s=>counts[s.domain]=(counts[s.domain]||0)+1);
+  const items=[['all','All scripts','\u{1F4DA}',SCRIPTS.length]];
+  Object.keys(counts).sort().forEach(d=>items.push([d,d,(SCRIPTS.find(s=>s.domain===d)||{}).icon||'',counts[d]]));
+  items.push(['runbooks','Runbooks','\u{1F4CB}',RUNBOOKS.length]);
+  const n=$('nav');n.innerHTML='';
+  items.forEach(([k,label,ic,c])=>{const b=document.createElement('div');b.className='nav-i'+(k===FILTER?' active':'');
+    b.innerHTML='<span class="ic">'+ic+'</span><span>'+esc(label)+'</span><span class="n">'+c+'</span>';
+    b.onclick=()=>{FILTER=k;[...n.children].forEach(x=>x.classList.remove('active'));b.classList.add('active');
+      $('hero-title').textContent=k==='all'?'All Scripts':(k==='runbooks'?'Runbooks':label);
+      $('side').classList.remove('open');apply();window.scrollTo({top:0});};
+    n.appendChild(b);});
+}
+// detail
+const mD=$('m-detail');let curText='';
+function closeD(){mD.classList.remove('open');}
+$('d-close').onclick=closeD;mD.onclick=e=>{if(e.target===mD)closeD();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeD();$('m-upload').classList.remove('open');$('m-settings').classList.remove('open');}});
+$('d-copy').onclick=()=>navigator.clipboard.writeText(curText).then(()=>{$('d-copy').innerHTML='&#10003; Copied';setTimeout(()=>$('d-copy').innerHTML='&#128203; Copy',1700);});
+function openDetail(s){
+  $('d-title').textContent=s.name;$('d-sub').innerHTML=esc(s.domain)+' &middot; '+s.type+(s.readonly&&s.type!=='Runbook'?' &middot; read-only':'');
+  $('d-raw').href=s.path;const body=$('d-body');body.innerHTML='<div class="empty">Loading&hellip;</div>';mD.classList.add('open');
+  fetch(s.path).then(r=>r.text()).then(txt=>{
+    curText=txt;
+    if(lang(s.path)==='markdown'&&window.marked){body.innerHTML='<div class="md">'+marked.parse(txt)+'</div>';return;}
+    const meta='<div class="meta">'
+      +'<div class="full"><h4>Description</h4><p class="desc">'+esc(s.description||s.synopsis)+'</p></div>'
+      +'<div><h4>Permissions</h4><p>'+esc(s.permissions||'—')+'</p></div>'
+      +'<div><h4>Modules / requirements</h4><p>'+esc(s.modules||'—')+'</p></div>'
+      +'<div class="full"><h4>Example</h4><code>'+esc(s.example||('.\\'+s.name))+'</code></div>'
+      +'<div class="full"><h4>Returns</h4><p class="desc">'+esc(s.returns||'A structured report.')+'</p></div>'
+      +'<div class="full"><h4>Source</h4><code>'+esc(s.source)+'</code></div></div>';
+    body.innerHTML=meta+'<pre class="code"><code class="language-'+lang(s.path)+'"></code></pre>';
+    const code=body.querySelector('pre code');code.textContent=txt;if(window.hljs)hljs.highlightElement(code);
+    body.scrollTop=0;
+  }).catch(()=>{body.innerHTML='<div class="empty">Could not load file.</div>';});
+}
+// settings
+$('open-settings').onclick=()=>{$('s-worker').value=cfg.worker;$('s-pass').value=cfg.pass;$('s-key').value=cfg.key;$('m-settings').classList.add('open');};
+$('s-close').onclick=()=>$('m-settings').classList.remove('open');
+$('chat-cfg').onclick=e=>{e.preventDefault();$('open-settings').click();};
+$('s-save').onclick=()=>{
+  localStorage.setItem('sb_worker',$('s-worker').value.trim().replace(/\/$/,''));
+  localStorage.setItem('sb_pass',$('s-pass').value.trim());
+  localStorage.setItem('or_key',$('s-key').value.trim());
+  $('m-settings').classList.remove('open');updateChatMode();
+};
+// upload
+$('open-upload').onclick=()=>{$('m-upload').classList.add('open');refreshUploadHint();};
+$('u-close').onclick=()=>$('m-upload').classList.remove('open');
+function refreshUploadHint(){
+  $('u-hint').innerHTML = cfg.worker
+    ? 'Submit commits straight to the repo via your Worker (passcode required). The site redeploys in ~1 min.'
+    : 'No Worker configured, so Submit isn\'t available. Use <b>Download file</b> and add it to the repo, or set a Worker URL in Settings.';
+  $('u-submit').style.display = cfg.worker ? 'inline-flex' : 'none';
+}
+function collectUpload(){return{domain:$('u-domain').value,name:$('u-name').value.trim(),type:$('u-type').value,
+  synopsis:$('u-syn').value.trim(),description:$('u-desc').value.trim(),source:$('u-source').value.trim(),content:$('u-content').value};}
+$('u-download').onclick=()=>{const u=collectUpload();if(!u.name||!u.content){$('u-msg').innerHTML='<span class="note-err">Name and content are required.</span>';return;}
+  const blob=new Blob([u.content],{type:'text/plain'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=u.name;a.click();
+  $('u-msg').innerHTML='<span class="note-ok">Downloaded '+esc(u.name)+'. Add it under scripts/'+esc(u.domain)+'/ in the repo.</span>';};
+$('u-submit').onclick=async()=>{
+  const u=collectUpload();if(!u.name||!u.content){$('u-msg').innerHTML='<span class="note-err">Name and content are required.</span>';return;}
+  if(!cfg.pass){$('u-msg').innerHTML='<span class="note-err">Set the upload passcode in Settings first.</span>';return;}
+  $('u-msg').textContent='Uploading…';
+  try{const r=await fetch(cfg.worker+'/upload',{method:'POST',headers:{'Content-Type':'application/json','X-Upload-Passcode':cfg.pass},body:JSON.stringify(u)});
+    const d=await r.json();
+    if(r.ok)$('u-msg').innerHTML='<span class="note-ok">'+esc(d.message||'Uploaded.')+'</span>';
+    else $('u-msg').innerHTML='<span class="note-err">'+esc(d.error||('HTTP '+r.status))+'</span>';
+  }catch(e){$('u-msg').innerHTML='<span class="note-err">'+esc(String(e))+'</span>';}
+};
+// chat
+const chat=$('chat'),chatMsgs=$('chat-msgs'),chatInput=$('chat-input');let history=[],catalog='';
+function updateChatMode(){const m=cfg.worker?'via secure Worker':(cfg.key?'browser key (fallback)':'not configured');$('chat-mode').textContent=m;refreshUploadHint();}
+$('chat-fab').onclick=()=>{chat.classList.add('open');updateChatMode();if(!history.length)addMsg('bot','Hi! Ask me to find a script, explain one, or draft a new read-only script. Try: *"report mailboxes with external forwarding"*.');chatInput.focus();};
+$('chat-close').onclick=()=>chat.classList.remove('open');
+$('chat-send').onclick=send;chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
+chatInput.addEventListener('input',()=>{chatInput.style.height='auto';chatInput.style.height=Math.min(chatInput.scrollHeight,120)+'px';});
+function addMsg(role,text){const d=document.createElement('div');d.className='msg '+role;d.innerHTML=(role==='bot'&&window.marked)?marked.parse(text):esc(text);chatMsgs.appendChild(d);chatMsgs.scrollTop=chatMsgs.scrollHeight;return d;}
+function sysPrompt(){if(!catalog)catalog='SCRIPTS ('+SCRIPTS.length+'):\n'+SCRIPTS.map(s=>'- '+s.name+' ['+s.domain+']: '+s.synopsis).join('\n');
+  return 'You are the Enterprise IT Script Bank assistant. All scripts here are READ-ONLY. Recommend an exact script from the catalog when one fits (name it), explain scripts, or draft new read-only PowerShell/Graph/Bash with comment-based help, least-privilege scopes, and a learn.microsoft.com source. Be concise; use Markdown.\n\n'+catalog;}
+async function send(){
+  const text=chatInput.value.trim();if(!text)return;
+  if(!cfg.worker&&!cfg.key){addMsg('sys','Open Settings to connect the Worker (recommended) or add an OpenRouter key.');return;}
+  addMsg('user',text);chatInput.value='';chatInput.style.height='auto';history.push({role:'user',content:text});
+  const t=addMsg('bot','…');$('chat-send').disabled=true;
+  const msgs=[{role:'system',content:sysPrompt()}].concat(history.slice(-8));
+  try{
+    let reply,model;
+    if(cfg.worker){const r=await fetch(cfg.worker+'/chat',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({messages:msgs})});
+      const d=await r.json();if(!r.ok)throw new Error(d.error||('HTTP '+r.status));reply=d.reply;model=d.model;}
+    else{let err='';for(const mdl of FREE){try{const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',headers:{'Authorization':'Bearer '+cfg.key,'Content-Type':'application/json','HTTP-Referer':location.origin,'X-Title':'Script Bank'},body:JSON.stringify({model:mdl,messages:msgs,max_tokens:1500})});if(!r.ok){err='HTTP '+r.status+' on '+mdl;continue;}const d=await r.json();reply=d.choices[0].message.content;model=mdl;break;}catch(e){err=String(e);}}if(!reply)throw new Error(err);}
+    t.innerHTML=window.marked?marked.parse(reply):esc(reply);history.push({role:'assistant',content:reply});
+    if(model)$('chat-model').textContent=model.split('/').pop();
+  }catch(e){t.className='msg sys';t.textContent='Error: '+e.message;}
+  finally{$('chat-send').disabled=false;chatMsgs.scrollTop=chatMsgs.scrollHeight;}
+}
+// load
+function setBadge(c,t){$('dot').className='dot '+c;$('badge-txt').textContent=t;}
+fetch('scripts/manifest.json').then(r=>r.json()).then(d=>{
+  SCRIPTS=d.scripts||[];RUNBOOKS=d.runbooks||[];
+  $('k-scripts').textContent=SCRIPTS.length;$('k-runbooks').textContent=RUNBOOKS.length;
+  buildNav();apply();updateChatMode();setBadge('ok','Updated '+(d.generated||''));
+}).catch(()=>{$('grid').innerHTML='<div class="empty">Could not load manifest.json.</div>';});
+fetch('agent/last_run.md').then(r=>r.ok?r.text():Promise.reject()).then(md=>{
+  const g=re=>{const m=md.match(re);return m?parseInt(m[1],10):0;};const dm=md.match(/run\s*[-–]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/);const date=dm?dm[1]:'';
+  const b=g(/Broken sources:\s*\*\*(\d+)/),c=g(/Changed sources:\s*\*\*(\d+)/);
+  if(b)setBadge('err',date+' · '+b+' broken');else if(c)setBadge('warn',date+' · '+c+' changed');else setBadge('ok','Sources OK · '+date);
+}).catch(()=>{});
+</script>
 </body>
 </html>

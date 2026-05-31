@@ -11,6 +11,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Baseline system diagnostics (OS, RAM, disk, uptime).",
+      "description": "Collects OS, memory, disk and uptime for first-line triage. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-SystemDiagnostics.ps1 -Verbose   |   .\\Get-SystemDiagnostics.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -22,6 +27,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Top 10 processes by CPU time.",
+      "description": "Lists the heaviest CPU consumers to spot runaway processes. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-TopCpuProcesses.ps1 -Verbose   |   .\\Get-TopCpuProcesses.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.management/get-process"
     },
     {
@@ -33,6 +43,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Top 10 processes by memory (working set).",
+      "description": "Lists the largest memory consumers. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-TopMemoryProcesses.ps1 -Verbose   |   .\\Get-TopMemoryProcesses.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.management/get-process"
     },
     {
@@ -44,6 +59,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Free space on all fixed drives.",
+      "description": "Reports capacity and free space per local fixed disk. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-DiskSpaceReport.ps1 -Verbose   |   .\\Get-DiskSpaceReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -55,6 +75,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Installed software inventory (from registry).",
+      "description": "Enumerates installed programs via the uninstall registry keys. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-InstalledSoftwareInventory.ps1 -Verbose   |   .\\Get-InstalledSoftwareInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/windows/win32/msi/uninstall-registry-key"
     },
     {
@@ -66,6 +91,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Automatic services that are stopped.",
+      "description": "Flags auto-start services that are not running. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-StoppedAutoServices.ps1 -Verbose   |   .\\Get-StoppedAutoServices.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -77,6 +107,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Programs configured to run at startup.",
+      "description": "Lists startup entries from registry run keys and startup folders. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-StartupPrograms.ps1 -Verbose   |   .\\Get-StartupPrograms.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -88,6 +123,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "System & Application errors in last 24h.",
+      "description": "Pulls error/critical events from the last day for triage. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-RecentSystemErrors.ps1 -Verbose   |   .\\Get-RecentSystemErrors.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.diagnostics/get-winevent"
     },
     {
@@ -99,6 +139,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Members of the local Administrators group.",
+      "description": "Audits who has local admin rights on the machine. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-LocalAdminMembers.ps1 -Verbose   |   .\\Get-LocalAdminMembers.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.localaccounts/get-localgroupmember"
     },
     {
@@ -110,6 +155,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Whether the machine has a pending reboot.",
+      "description": "Checks common registry markers for a required restart. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-PendingRebootStatus.ps1 -Verbose   |   .\\Get-PendingRebootStatus.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/windows/deployment/update/how-windows-update-works"
     },
     {
@@ -121,6 +171,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Active network adapters and IP config.",
+      "description": "Reports up adapters with addresses and gateways. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-NetworkAdapterInfo.ps1 -Verbose   |   .\\Get-NetworkAdapterInfo.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/nettcpip/get-netipconfiguration"
     },
     {
@@ -132,6 +187,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Last boot time and current uptime.",
+      "description": "Shows how long the system has been running. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-LastBootAndUptime.ps1 -Verbose   |   .\\Get-LastBootAndUptime.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -143,6 +203,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Installed Windows updates / hotfixes.",
+      "description": "Lists applied updates with install dates. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-HotfixInventory.ps1 -Verbose   |   .\\Get-HotfixInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.management/get-hotfix"
     },
     {
@@ -154,6 +219,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "BitLocker protection status per volume.",
+      "description": "Reports encryption status of local volumes. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-BitLockerStatus.ps1 -Verbose   |   .\\Get-BitLockerStatus.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/bitlocker/get-bitlockervolume"
     },
     {
@@ -165,6 +235,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Windows Firewall profile states.",
+      "description": "Shows whether each firewall profile is enabled. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-FirewallProfileStatus.ps1 -Verbose   |   .\\Get-FirewallProfileStatus.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/netsecurity/get-netfirewallprofile"
     },
     {
@@ -176,6 +251,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Enabled non-Microsoft scheduled tasks.",
+      "description": "Lists custom scheduled tasks for review. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-ScheduledTaskInventory.ps1 -Verbose   |   .\\Get-ScheduledTaskInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/scheduledtasks/get-scheduledtask"
     },
     {
@@ -187,6 +267,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Current DNS client resolver cache.",
+      "description": "Dumps the local DNS cache for troubleshooting. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-DnsClientCache.ps1 -Verbose   |   .\\Get-DnsClientCache.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/dnsclient/get-dnsclientcache"
     },
     {
@@ -198,6 +283,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Users with no sign-in in N days.",
+      "description": "Finds enabled members inactive beyond a threshold for review. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "AuditLog.Read.All, User.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-EntraInactiveUsers.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/resources/signinactivity"
     },
     {
@@ -209,6 +299,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Per-user MFA / auth method registration.",
+      "description": "Reports registered strong auth methods and flags users without MFA. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "UserAuthenticationMethod.Read.All, User.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-EntraMFAStatus.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/authentication-list-methods"
     },
     {
@@ -220,6 +315,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "App registration secrets/certs nearing expiry.",
+      "description": "Flags expiring app credentials to prevent outages. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Application.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Applications",
+      "example": ".\\Get-EntraAppCredentialExpiry.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/application-list"
     },
     {
@@ -231,6 +331,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All guest (B2B) accounts.",
+      "description": "Inventories external guest users in the tenant. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "User.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Users",
+      "example": ".\\Get-EntraGuestUsers.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/user-list"
     },
     {
@@ -242,6 +347,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Members of privileged directory roles.",
+      "description": "Audits who holds admin roles like Global Administrator. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "RoleManagement.Read.Directory, Directory.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Identity.DirectoryManagement",
+      "example": ".\\Get-EntraPrivilegedRoleMembers.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/directoryrole-list"
     },
     {
@@ -253,6 +363,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All disabled (blocked sign-in) accounts.",
+      "description": "Lists accounts with sign-in disabled. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "User.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Users",
+      "example": ".\\Get-EntraDisabledUsers.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/user-list"
     },
     {
@@ -264,6 +379,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All groups with type and membership counts.",
+      "description": "Inventories security/M365 groups. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Group.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Groups",
+      "example": ".\\Get-EntraGroupInventory.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/group-list"
     },
     {
@@ -275,6 +395,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "License (SKU) consumption summary.",
+      "description": "Shows assigned vs available seats per SKU. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Organization.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Identity.DirectoryManagement",
+      "example": ".\\Get-EntraLicenseAssignmentReport.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/subscribedsku-list"
     },
     {
@@ -286,6 +411,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All Conditional Access policies.",
+      "description": "Inventories CA policies and their state. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Policy.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Identity.SignIns",
+      "example": ".\\Get-EntraConditionalAccessPolicies.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/conditionalaccesspolicy-list"
     },
     {
@@ -297,6 +427,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Users flagged at risk by Identity Protection.",
+      "description": "Reports risky users and risk level. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "IdentityRiskyUser.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Identity.SignIns",
+      "example": ".\\Get-EntraRiskyUsers.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/riskyuser-list"
     },
     {
@@ -308,6 +443,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Devices with no recent activity.",
+      "description": "Lists Entra-registered devices inactive for a while. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Device.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Identity.DirectoryManagement",
+      "example": ".\\Get-EntraStaleDevices.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/device-list"
     },
     {
@@ -319,6 +459,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All app registrations.",
+      "description": "Inventories app registrations and owners. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Application.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Applications",
+      "example": ".\\Get-EntraAppRegistrationInventory.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/application-list"
     },
     {
@@ -330,6 +475,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Enterprise apps / service principals.",
+      "description": "Lists service principals and their enablement. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Application.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Applications",
+      "example": ".\\Get-EntraServicePrincipalInventory.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/serviceprincipal-list"
     },
     {
@@ -341,6 +491,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Enabled users missing a manager.",
+      "description": "Finds accounts with no manager set (data hygiene). Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "User.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Users",
+      "example": ".\\Get-EntraUsersWithoutManager.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/user-list-manager"
     },
     {
@@ -352,6 +507,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Conditional Access named locations.",
+      "description": "Lists IP/country named locations used by CA. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "Policy.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.Identity.SignIns",
+      "example": ".\\Get-EntraNamedLocations.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/conditionalaccessroot-list-namedlocations"
     },
     {
@@ -363,6 +523,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Managed devices that are non-compliant.",
+      "description": "Lists devices whose compliance state is not compliant. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementManagedDevices.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.DeviceManagement",
+      "example": ".\\Get-IntuneNonCompliantDevices.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-devices-manageddevice-list"
     },
     {
@@ -374,6 +539,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Full inventory of Intune managed devices.",
+      "description": "Lists all enrolled devices with OS and ownership. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementManagedDevices.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.DeviceManagement",
+      "example": ".\\Get-IntuneManagedDeviceInventory.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-devices-manageddevice-list"
     },
     {
@@ -385,6 +555,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All device compliance policies.",
+      "description": "Inventories compliance policies configured in Intune. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementConfiguration.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneCompliancePolicies.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-deviceconfig-devicecompliancepolicy-list"
     },
     {
@@ -396,6 +571,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All device configuration profiles.",
+      "description": "Inventories configuration profiles. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementConfiguration.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneConfigurationProfiles.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-deviceconfig-deviceconfiguration-list"
     },
     {
@@ -407,6 +587,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Per-app install success/failure summary.",
+      "description": "Summarises managed app deployment results. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementApps.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneAppInstallStatus.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-apps-mobileapp-list"
     },
     {
@@ -418,6 +603,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Windows Autopilot registered devices.",
+      "description": "Lists devices registered for Autopilot. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementServiceConfig.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneAutopilotDevices.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-enrollment-windowsautopilotdeviceidentity-list"
     },
     {
@@ -429,6 +619,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Count of enrolled devices grouped by OS.",
+      "description": "Summarises the device fleet by operating system. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementManagedDevices.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.DeviceManagement",
+      "example": ".\\Get-IntuneDevicesByOS.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-devices-manageddevice-list"
     },
     {
@@ -440,6 +635,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Devices not synced recently.",
+      "description": "Flags managed devices with old last-sync dates. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementManagedDevices.Read.All",
+      "modules": "Microsoft.Graph.Authentication, Microsoft.Graph.DeviceManagement",
+      "example": ".\\Get-IntuneStaleDevices.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-devices-manageddevice-list"
     },
     {
@@ -451,6 +651,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "App protection (MAM) policies.",
+      "description": "Inventories iOS/Android app protection policies. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementApps.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneAppProtectionPolicies.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-mam-managedapppolicy-list"
     },
     {
@@ -462,6 +667,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Windows Update for Business rings.",
+      "description": "Lists update ring configurations. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementConfiguration.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneWindowsUpdateRings.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-deviceconfig-windowsupdateforbusinessconfiguration-list"
     },
     {
@@ -473,6 +683,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Configured device categories.",
+      "description": "Lists Intune device categories. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementConfiguration.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneDeviceCategories.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-devices-devicecategory-list"
     },
     {
@@ -484,6 +699,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Apps detected across managed devices.",
+      "description": "Reports discovered apps and device counts. Connects to Microsoft Graph using only the least-privilege READ scopes listed below, builds a structured report, then disconnects automatically. Pipe the output to Export-Csv with -ExportCsv for reporting. Read-only — it never writes back to the tenant.",
+      "permissions": "DeviceManagementManagedDevices.Read.All",
+      "modules": "Microsoft.Graph.Authentication",
+      "example": ".\\Get-IntuneDetectedApps.ps1 -ExportCsv .\\report.csv -Verbose",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/graph/api/intune-devices-detectedapp-list"
     },
     {
@@ -495,6 +715,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Computer accounts inactive beyond N days.",
+      "description": "Reports stale computer objects by LastLogonTimeStamp. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADStaleComputers.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-adcomputer"
     },
     {
@@ -506,6 +731,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Locked-out and password-expiring accounts.",
+      "description": "Reports locked accounts and upcoming password expiries. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADAccountLockoutReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/search-adaccount"
     },
     {
@@ -517,6 +747,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "User accounts inactive beyond N days.",
+      "description": "Reports enabled users with old last-logon timestamps. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADInactiveUsers.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/search-adaccount"
     },
     {
@@ -528,6 +763,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Passwords expiring within N days.",
+      "description": "Reports accounts whose password expires soon. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADPasswordExpiryReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-aduser"
     },
     {
@@ -539,6 +779,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Members of privileged AD groups.",
+      "description": "Audits Domain/Enterprise/Schema Admins membership. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADPrivilegedGroupMembers.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-adgroupmember"
     },
     {
@@ -550,6 +795,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Inventory of all AD user accounts.",
+      "description": "Lists users with key attributes. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADUserInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-aduser"
     },
     {
@@ -561,6 +811,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Inventory of all AD groups.",
+      "description": "Lists groups with scope and category. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADGroupInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-adgroup"
     },
     {
@@ -572,6 +827,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Security groups with no members.",
+      "description": "Finds empty groups for cleanup review. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADEmptyGroups.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-adgroup"
     },
     {
@@ -583,6 +843,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All disabled user accounts.",
+      "description": "Lists disabled accounts still present in AD. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADDisabledAccounts.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/search-adaccount"
     },
     {
@@ -594,6 +859,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Accounts with non-expiring passwords.",
+      "description": "Flags a common security risk for review. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADUsersPasswordNeverExpires.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-aduser"
     },
     {
@@ -605,6 +875,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Inventory of all computer objects.",
+      "description": "Lists computers with OS and last logon. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADComputerInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-adcomputer"
     },
     {
@@ -616,6 +891,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Inventory of Group Policy Objects.",
+      "description": "Lists GPOs with status and modified dates (GroupPolicy module). Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADGPOInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/grouppolicy/get-gpo"
     },
     {
@@ -627,6 +907,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "FSMO role holders in the forest/domain.",
+      "description": "Reports which DCs hold operations master roles. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADFSMORoles.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-addomain"
     },
     {
@@ -638,6 +923,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Organizational Unit tree.",
+      "description": "Lists OUs and their distinguished names. Queries on-premises Active Directory and returns a structured object you can pipe to Export-Csv with -ExportCsv. Run on a machine with the RSAT ActiveDirectory module and read access to the directory. Read-only — no objects are modified.",
+      "permissions": "Read access to AD objects (domain user is usually sufficient)",
+      "modules": "ActiveDirectory (RSAT) – install via: Add-WindowsCapability -Online -Name Rsat.ActiveDirectory*",
+      "example": ".\\Get-ADOUStructure.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/activedirectory/get-adorganizationalunit"
     },
     {
@@ -649,6 +939,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "CPU, memory, disk and reboot health snapshot.",
+      "description": "One-shot health snapshot for a Windows Server. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-ServerHealthReport.ps1 -Verbose   |   .\\Get-ServerHealthReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -660,6 +955,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Machine certificates nearing expiry.",
+      "description": "Flags LocalMachine\\My certs expiring soon. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-CertificateExpiryReport.ps1 -Verbose   |   .\\Get-CertificateExpiryReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/pki/"
     },
     {
@@ -671,6 +971,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Installed Windows Server roles/features.",
+      "description": "Lists installed server roles and features. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-WindowsFeatureInventory.ps1 -Verbose   |   .\\Get-WindowsFeatureInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/servermanager/get-windowsfeature"
     },
     {
@@ -682,6 +987,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Recent installed updates and last search.",
+      "description": "Reports applied updates for patch compliance. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-WindowsUpdateStatus.ps1 -Verbose   |   .\\Get-WindowsUpdateStatus.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.management/get-hotfix"
     },
     {
@@ -693,6 +1003,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Error counts by source (System, last 7d).",
+      "description": "Aggregates recent System errors by provider. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-EventLogErrorSummary.ps1 -Verbose   |   .\\Get-EventLogErrorSummary.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.diagnostics/get-winevent"
     },
     {
@@ -704,6 +1019,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Non-default SMB shares and paths.",
+      "description": "Inventories file shares for audit. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-SharedFolderInventory.ps1 -Verbose   |   .\\Get-SharedFolderInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/smbshare/get-smbshare"
     },
     {
@@ -715,6 +1035,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Listening TCP ports and owning process.",
+      "description": "Reports listening endpoints for security review. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-OpenPortsReport.ps1 -Verbose   |   .\\Get-OpenPortsReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/nettcpip/get-nettcpconnection"
     },
     {
@@ -726,6 +1051,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Volume health and free space.",
+      "description": "Reports volume health status and capacity. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-LocalVolumeHealth.ps1 -Verbose   |   .\\Get-LocalVolumeHealth.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/storage/get-volume"
     },
     {
@@ -737,6 +1067,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Quick CPU/memory/disk-queue counters.",
+      "description": "Samples key performance counters once. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-ServerPerformanceSnapshot.ps1 -Verbose   |   .\\Get-ServerPerformanceSnapshot.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/microsoft.powershell.diagnostics/get-counter"
     },
     {
@@ -748,6 +1083,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Scheduled tasks with last result not zero.",
+      "description": "Flags tasks whose last run failed. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-ScheduledTaskHealth.ps1 -Verbose   |   .\\Get-ScheduledTaskHealth.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/scheduledtasks/get-scheduledtaskinfo"
     },
     {
@@ -759,6 +1099,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Windows Time service sync status.",
+      "description": "Reports time source and sync state (w32tm). Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-ServerTimeSyncStatus.ps1 -Verbose   |   .\\Get-ServerTimeSyncStatus.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/windows-server/networking/windows-time-service/windows-time-service-tools-and-settings"
     },
     {
@@ -770,6 +1115,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Page file configuration and size.",
+      "description": "Reports virtual memory / page file settings. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-PageFileConfig.ps1 -Verbose   |   .\\Get-PageFileConfig.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/cimcmdlets/get-ciminstance"
     },
     {
@@ -781,6 +1131,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "DNS server zones (DNS role).",
+      "description": "Lists hosted DNS zones on a DNS server. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-DnsServerZones.ps1 -Verbose   |   .\\Get-DnsServerZones.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/dnsserver/get-dnsserverzone"
     },
     {
@@ -792,6 +1147,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "DHCP scopes and utilization (DHCP role).",
+      "description": "Reports DHCP scopes and address usage. Runs locally and returns a structured PowerShell object (one row per item) that you can pipe to Export-Csv via the -ExportCsv parameter, or display directly. Use -Verbose for step-by-step progress. Strictly read-only — it inspects the system and never changes configuration.",
+      "permissions": "Standard local read access (Administrator recommended for full event/registry visibility)",
+      "modules": "Built-in Windows PowerShell modules (no install required)",
+      "example": ".\\Get-DhcpScopeReport.ps1 -Verbose   |   .\\Get-DhcpScopeReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/dhcpserver/get-dhcpserverv4scopestatistics"
     },
     {
@@ -803,6 +1163,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Mailbox sizes and item counts.",
+      "description": "Reports mailbox total size and item count. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-MailboxSizeReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-exomailboxstatistics"
     },
     {
@@ -814,6 +1179,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "External forwarding and forwarding rules.",
+      "description": "Security report of mailbox forwarding and inbox rules. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-MailboxForwardingReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-mailbox"
     },
     {
@@ -825,6 +1195,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "All shared mailboxes.",
+      "description": "Inventories shared mailboxes in the tenant. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-SharedMailboxInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-exomailbox"
     },
     {
@@ -836,6 +1211,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Distribution and mail-enabled security groups.",
+      "description": "Lists distribution groups with member counts. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-DistributionGroupInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-distributiongroup"
     },
     {
@@ -847,6 +1227,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Non-owner full-access mailbox permissions.",
+      "description": "Reports who has FullAccess to other mailboxes. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-MailboxPermissionReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-exomailboxpermission"
     },
     {
@@ -858,6 +1243,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Mailboxes with no recent logon.",
+      "description": "Reports mailboxes inactive by last logon time. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-InactiveMailboxes.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-exomailboxstatistics"
     },
     {
@@ -869,6 +1259,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Mailboxes on litigation hold.",
+      "description": "Reports hold status for compliance. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-LitigationHoldReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-mailbox"
     },
     {
@@ -880,6 +1275,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Mail flow (transport) rules.",
+      "description": "Inventories transport rules and their state. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-TransportRuleInventory.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-transportrule"
     },
     {
@@ -891,6 +1291,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Mailboxes with auto-reply enabled.",
+      "description": "Lists mailboxes currently sending automatic replies. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-MailboxAutoReplyReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-mailboxautoreplyconfiguration"
     },
     {
@@ -902,6 +1307,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Mobile devices connected to mailboxes.",
+      "description": "Reports ActiveSync/mobile device partnerships. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-MobileDeviceReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-mobiledevice"
     },
     {
@@ -913,6 +1323,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Accepted domains for the tenant.",
+      "description": "Lists accepted domains and their type. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-AcceptedDomainsReport.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-accepteddomain"
     },
     {
@@ -924,6 +1339,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Members of Exchange admin role groups.",
+      "description": "Audits Exchange Online RBAC role group membership. Connects to Exchange Online with modern auth, gathers the report across all relevant mailboxes/objects, then disconnects. Pipe to Export-Csv with -ExportCsv. Read-only — it only reads recipient data and changes nothing.",
+      "permissions": "View-Only Recipients or Exchange Recipient Reader role",
+      "modules": "ExchangeOnlineManagement (Install-Module ExchangeOnlineManagement)",
+      "example": ".\\Get-RoleGroupMembers.ps1 -ExportCsv .\\report.csv",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/powershell/module/exchange/get-rolegroup"
     },
     {
@@ -935,6 +1355,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Load, memory, disk and failed-unit health check.",
+      "description": "One-shot health check; warns on thresholds. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./check_server_health.sh   |   ./check_server_health.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -946,6 +1371,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Host inventory (OS, CPU, memory, disk, net).",
+      "description": "Read-only host inventory snapshot. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./inventory_report.sh   |   ./inventory_report.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -957,6 +1387,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Largest directories under a path.",
+      "description": "Reports top space consumers (default /var). A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./disk_usage_report.sh   |   ./disk_usage_report.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -968,6 +1403,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Top processes by CPU and memory.",
+      "description": "Shows the heaviest processes. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./top_processes.sh   |   ./top_processes.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -979,6 +1419,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Failed and inactive systemd services.",
+      "description": "Lists failed units and a summary. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./service_status.sh   |   ./service_status.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -990,6 +1435,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Recent failed SSH login attempts.",
+      "description": "Reports failed auth attempts for security review. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./failed_login_report.sh   |   ./failed_login_report.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1001,6 +1451,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Listening TCP/UDP ports and processes.",
+      "description": "Reports listening sockets for audit. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./open_ports_report.sh   |   ./open_ports_report.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1012,6 +1467,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Local users, UID 0 accounts and sudo group.",
+      "description": "Audits accounts and privilege for review. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./user_account_audit.sh   |   ./user_account_audit.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1023,6 +1483,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "System and per-user cron jobs.",
+      "description": "Inventories scheduled cron tasks. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./cron_inventory.sh   |   ./cron_inventory.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1034,6 +1499,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Available package updates (no changes).",
+      "description": "Dry-run check for pending updates. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./package_update_check.sh   |   ./package_update_check.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1045,6 +1515,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Memory and swap usage detail.",
+      "description": "Reports RAM, swap and top memory consumers. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./memory_report.sh   |   ./memory_report.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1056,6 +1531,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Interfaces, routes and DNS config.",
+      "description": "Reports network configuration read-only. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./network_interfaces.sh   |   ./network_interfaces.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1067,6 +1547,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "TLS certificate expiry for a host:port.",
+      "description": "Checks remote certificate validity dates. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./ssl_cert_expiry.sh   |   ./ssl_cert_expiry.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     },
     {
@@ -1078,6 +1563,11 @@
       "tier": "TIER 1",
       "readonly": true,
       "synopsis": "Sudoers configuration (read-only).",
+      "description": "Shows sudo rules for privilege review. A POSIX bash report that prints results to standard output; safe to run on production Linux hosts. Read-only — it only reads system state and never modifies the host. Redirect to a file with '> report.txt' if you want to save it.",
+      "permissions": "Standard shell access (sudo only needed for some logs/audits)",
+      "modules": "Core GNU/Linux utilities (bash, awk, ss/ip, systemctl where present)",
+      "example": "./sudoers_audit.sh   |   ./sudoers_audit.sh > report.txt",
+      "returns": "A structured report (one row per matching item), pipeable to Export-Csv.",
       "source": "learn.microsoft.com/azure/virtual-machines/linux/"
     }
   ],

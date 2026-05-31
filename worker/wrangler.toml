@@ -1,0 +1,12 @@
+name = "script-bank-proxy"
+main = "worker.js"
+compatibility_date = "2024-11-01"
+
+# Public config (safe to commit). Set the secrets separately (never committed):
+#   wrangler secret put OPENROUTER_API_KEY
+#   wrangler secret put GITHUB_TOKEN        # fine-grained PAT: Contents read/write on the repo
+#   wrangler secret put UPLOAD_PASSCODE     # any phrase you choose; required to upload
+[vars]
+REPO = "KidLearning99/script-bank"
+ALLOW_ORIGIN = "https://kidlearning99.github.io"
+BANK_MODELS = "minimax/minimax-m2.5:free,moonshotai/kimi-k2.6:free"
