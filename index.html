@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Enterprise IT Script Bank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/powershell.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/bash.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/marked/12.0.2/marked.min.js"></script>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root,[data-theme="dark"]{--bg:#0d1117;--surface:#161b22;--surface-2:#1c2128;--surface-3:#21262d;--border:#30363d;--text:#e6edf3;--text-muted:#8b949e;--text-faint:#484f58;--primary:#58a6ff;--primary-dim:#1f6feb;--green:#3fb950;--orange:#d29922;--purple:#bc8cff;--cyan:#39c5cf;--red:#f85149;--font-mono:'JetBrains Mono',monospace;--font-body:'Inter',system-ui,sans-serif;--radius:8px;--radius-lg:12px;--shadow:0 1px 3px rgba(0,0,0,.4),0 8px 24px rgba(0,0,0,.3)}
+[data-theme="light"]{--bg:#f6f8fa;--surface:#fff;--surface-2:#f6f8fa;--surface-3:#eaeef2;--border:#d0d7de;--text:#1f2328;--text-muted:#656d76;--text-faint:#9198a1;--primary:#0969da;--primary-dim:#218bff;--green:#1a7f37;--orange:#9a6700;--purple:#8250df;--cyan:#1b7c83;--red:#d1242f;--shadow:0 1px 3px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.06)}
+body{font-family:var(--font-body);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6;min-height:100vh}
+.wrap{max-width:1180px;margin:0 auto;padding:0 24px}
+header{border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:20}
+.hbar{display:flex;align-items:center;justify-content:space-between;padding:14px 0;gap:12px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;gap:12px}
+.logo-icon{width:38px;height:38px;background:linear-gradient(135deg,var(--primary-dim),var(--purple));border-radius:9px;display:flex;align-items:center;justify-content:center;font-size:19px}
+.logo-text{font-weight:700;font-size:16px}
+.logo-sub{font-size:11px;color:var(--text-muted);font-family:var(--font-mono);letter-spacing:.05em}
+.hactions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.btn{font-family:var(--font-body);font-size:13px;font-weight:500;color:var(--text);background:var(--surface-2);border:1px solid var(--border);border-radius:var(--radius);padding:8px 14px;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:6px;transition:140ms}
+.btn:hover{border-color:var(--primary)}
+.badge{font-family:var(--font-mono);font-size:12px}
+.badge .dot{width:8px;height:8px;border-radius:50%;background:var(--text-faint);display:inline-block}
+.badge .dot.ok{background:var(--green)}.badge .dot.warn{background:var(--orange)}.badge .dot.err{background:var(--red)}
+.hero{padding:40px 0 20px;text-align:center}
+.hero h1{font-size:32px;font-weight:700;line-height:1.2;margin-bottom:10px}
+.hero p{color:var(--text-muted);max-width:640px;margin:0 auto 22px;font-size:15px}
+.stats{display:flex;gap:30px;justify-content:center;flex-wrap:wrap}
+.stat b{display:block;font-size:26px;font-weight:700;color:var(--primary)}
+.stat span{font-size:12px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.08em}
+.controls{position:sticky;top:67px;background:var(--bg);padding:16px 0 10px;z-index:10}
+.search input{width:100%;padding:11px 14px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:var(--font-body);font-size:14px}
+.search input:focus{outline:none;border-color:var(--primary)}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.tab{font-size:12.5px;font-weight:500;color:var(--text-muted);background:var(--surface);border:1px solid var(--border);border-radius:20px;padding:6px 13px;cursor:pointer;transition:140ms;display:inline-flex;gap:6px;align-items:center}
+.tab:hover{border-color:var(--primary);color:var(--text)}
+.tab.active{background:var(--primary-dim);border-color:var(--primary-dim);color:#fff}
+.tab .n{font-family:var(--font-mono);font-size:11px;opacity:.8}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(330px,1fr));gap:14px;padding:14px 0 56px}
+.card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);padding:16px;display:flex;flex-direction:column;gap:9px;cursor:pointer;transition:140ms}
+.card:hover{border-color:var(--primary);box-shadow:var(--shadow);transform:translateY(-2px)}
+.card-top{display:flex;align-items:center;gap:10px}
+.card-icon{width:32px;height:32px;border-radius:8px;background:var(--surface-2);display:flex;align-items:center;justify-content:center;font-size:17px;flex-shrink:0}
+.card-domain{font-size:10.5px;color:var(--text-muted);text-transform:uppercase;letter-spacing:.05em}
+.card-name{font-family:var(--font-mono);font-weight:600;font-size:13.5px;color:var(--text);word-break:break-all}
+.card-syn{color:var(--text-muted);font-size:12.5px;flex:1}
+.tags{display:flex;gap:6px;flex-wrap:wrap}
+.tag{font-size:10.5px;font-family:var(--font-mono);padding:2px 8px;border-radius:20px;border:1px solid var(--border);color:var(--text-muted)}
+.tag.type{color:var(--cyan);border-color:var(--cyan)}
+.tag.ro{color:var(--green);border-color:var(--green)}
+.tag.guide{color:var(--purple);border-color:var(--purple)}
+.sec-title{font-size:12px;font-weight:600;color:var(--text-faint);text-transform:uppercase;letter-spacing:.1em;margin:24px 0 2px}
+footer{border-top:1px solid var(--border);padding:22px 0;color:var(--text-faint);font-size:12px;text-align:center;font-family:var(--font-mono)}
+/* modal viewer */
+.modal{position:fixed;inset:0;background:rgba(1,4,9,.7);backdrop-filter:blur(3px);display:none;align-items:center;justify-content:center;z-index:50;padding:20px}
+.modal.open{display:flex}
+.viewer{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius-lg);width:min(960px,100%);max-height:88vh;display:flex;flex-direction:column;box-shadow:var(--shadow)}
+.v-head{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:14px 18px;border-bottom:1px solid var(--border)}
+.v-title{font-family:var(--font-mono);font-weight:600;font-size:14px;word-break:break-all}
+.v-meta{font-size:11.5px;color:var(--text-muted);margin-top:2px}
+.v-actions{display:flex;gap:8px;flex-shrink:0}
+.v-body{overflow:auto;padding:0}
+.v-body pre{margin:0}
+.v-body pre code{font-family:var(--font-mono);font-size:12.5px;line-height:1.55;padding:18px!important;display:block}
+.v-body .md{padding:22px 26px}
+.v-body .md h1{font-size:20px;margin:.2em 0 .5em}.v-body .md h2{font-size:16px;margin:1em 0 .4em}
+.v-body .md ol,.v-body .md ul{margin:.4em 0 .8em 1.4em}.v-body .md li{margin:.25em 0}
+.v-body .md code{background:var(--surface-3);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12.5px}
+.v-body .md blockquote{border-left:3px solid var(--border);padding-left:12px;color:var(--text-muted);margin:.6em 0}
+.empty{color:var(--text-muted);padding:30px 4px}
+@media(max-width:600px){.hero h1{font-size:25px}}
+</style>
+</head>
+<body>
+<header><div class="wrap hbar">
+  <div class="logo"><div class="logo-icon">&#9889;</div>
+    <div><div class="logo-text">Enterprise IT Script Bank</div><div class="logo-sub">AI-MAINTAINED &middot; v3.0</div></div>
+  </div>
+  <div class="hactions">
+    <a class="btn badge" id="status-badge" href="agent/last_run.md" target="_blank" rel="noopener" title="Last auto-update run"><span class="dot" id="status-dot"></span><span id="status-text">checking&hellip;</span></a>
+    <a class="btn" id="repo-link" href="https://github.com/KidLearning99/script-bank" target="_blank" rel="noopener">&#11088; GitHub</a>
+    <button class="btn" id="theme-toggle">&#127769;</button>
+  </div>
+</div></header>
+
+<div class="wrap">
+  <section class="hero">
+    <h1>Production-ready PowerShell, Graph &amp; Bash scripts</h1>
+    <p>A large, source-cited, read-only library across seven enterprise IT domains. Click any script to read it in full with syntax highlighting and one-click copy. Source links are checked daily by an automated agent.</p>
+    <div class="stats">
+      <div class="stat"><b id="stat-scripts">0</b><span>Scripts</span></div>
+      <div class="stat"><b>7</b><span>Domains</span></div>
+      <div class="stat"><b id="stat-runbooks">0</b><span>Runbooks</span></div>
+      <div class="stat"><b>Daily</b><span>Source Check</span></div>
+    </div>
+  </section>
+
+  <div class="controls">
+    <div class="search"><input id="search" type="text" placeholder="Search 90+ scripts by name, purpose, or cmdlet&hellip;"></div>
+    <div class="tabs" id="tabs"></div>
+  </div>
+
+  <div id="scripts-wrap">
+    <div class="grid" id="grid"></div>
+  </div>
+
+  <div id="runbooks-wrap">
+    <div class="sec-title">Step-by-step Runbooks</div>
+    <div class="grid" id="rgrid"></div>
+  </div>
+</div>
+
+<footer>Enterprise IT Script Bank &middot; <span id="cnt">&mdash;</span> scripts &middot; Generated <span id="gen">&mdash;</span> &middot; All scripts read-only &amp; source-cited</footer>
+
+<!-- Viewer modal -->
+<div class="modal" id="modal">
+  <div class="viewer">
+    <div class="v-head">
+      <div><div class="v-title" id="v-title"></div><div class="v-meta" id="v-meta"></div></div>
+      <div class="v-actions">
+        <button class="btn" id="v-copy">&#128203; Copy</button>
+        <a class="btn" id="v-raw" target="_blank" rel="noopener">Raw</a>
+        <button class="btn" id="v-close">&#10005;</button>
+      </div>
+    </div>
+    <div class="v-body" id="v-body"></div>
+  </div>
+</div>
+
+<script>
+const $=id=>document.getElementById(id);
+const htmlEl=document.documentElement, tBtn=$('theme-toggle');
+tBtn.addEventListener('click',()=>{const n=htmlEl.getAttribute('data-theme')==='dark'?'light':'dark';htmlEl.setAttribute('data-theme',n);tBtn.innerHTML=n==='dark'?'&#127769;':'&#9728;';});
+
+let SCRIPTS=[],RUNBOOKS=[],FILTER='all',Q='';
+function esc(s){return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');}
+function langOf(p){return p.endsWith('.sh')?'bash':p.endsWith('.md')?'markdown':'powershell';}
+
+function cardHtml(s){
+  return '<div class="card-top"><div class="card-icon">'+(s.icon||'\u{1F4C4}')+'</div>'
+    +'<div><div class="card-domain">'+s.domain+'</div><div class="card-name">'+s.name+'</div></div></div>'
+    +'<div class="card-syn">'+esc(s.synopsis)+'</div>'
+    +'<div class="tags"><span class="tag type">'+s.type+'</span>'
+    +(s.readonly&&s.type!=='Runbook'?'<span class="tag ro">read-only</span>':'')
+    +(s.type==='Runbook'?'<span class="tag guide">guide</span>':'')+'</div>';
+}
+function makeCard(s){const a=document.createElement('div');a.className='card';a.innerHTML=cardHtml(s);a.onclick=()=>openViewer(s);return a;}
+function renderGrid(id,list){const g=$(id);g.innerHTML='';if(!list.length){g.innerHTML='<div class="empty">Nothing matches your search.</div>';return;}list.forEach(s=>g.appendChild(makeCard(s)));}
+
+function apply(){
+  const q=Q.toLowerCase();
+  const f=s=>(s.name+s.domain+s.synopsis+s.source+s.type).toLowerCase().includes(q);
+  let sc=SCRIPTS.filter(f); if(FILTER!=='all'&&FILTER!=='runbooks') sc=sc.filter(s=>s.domain===FILTER);
+  renderGrid('grid', FILTER==='runbooks'?[]:sc);
+  $('scripts-wrap').style.display = FILTER==='runbooks'?'none':'block';
+  const rb=RUNBOOKS.filter(f);
+  renderGrid('rgrid', (FILTER==='all'||FILTER==='runbooks')?rb:[]);
+  $('runbooks-wrap').style.display = (FILTER==='all'||FILTER==='runbooks')&&rb.length?'block':'none';
+}
+$('search').addEventListener('input',e=>{Q=e.target.value;apply();});
+
+function buildTabs(){
+  const counts={}; SCRIPTS.forEach(s=>counts[s.domain]=(counts[s.domain]||0)+1);
+  const domains=Object.keys(counts).sort();
+  const tabs=[['all','All','&#9776;',SCRIPTS.length]];
+  domains.forEach(d=>tabs.push([d,d,(SCRIPTS.find(s=>s.domain===d)||{}).icon||'',counts[d]]));
+  tabs.push(['runbooks','Runbooks','\u{1F4CB}',RUNBOOKS.length]);
+  const t=$('tabs');t.innerHTML='';
+  tabs.forEach(([key,label,icon,n])=>{
+    const b=document.createElement('div');b.className='tab'+(key===FILTER?' active':'');
+    b.innerHTML=(icon?icon+' ':'')+esc(label)+' <span class="n">'+n+'</span>';
+    b.onclick=()=>{FILTER=key;[...t.children].forEach(c=>c.classList.remove('active'));b.classList.add('active');apply();window.scrollTo({top:0,behavior:'smooth'});};
+    t.appendChild(b);
+  });
+}
+
+// ---- viewer ----
+const modal=$('modal');
+function closeV(){modal.classList.remove('open');}
+$('v-close').onclick=closeV; modal.onclick=e=>{if(e.target===modal)closeV();};
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeV();});
+let curText='';
+$('v-copy').onclick=()=>{navigator.clipboard.writeText(curText).then(()=>{$('v-copy').innerHTML='&#10003; Copied';setTimeout(()=>$('v-copy').innerHTML='&#128203; Copy',1800);});};
+function openViewer(s){
+  $('v-title').textContent=s.name;
+  $('v-meta').innerHTML=esc(s.domain)+' &middot; '+s.type+(s.readonly&&s.type!=='Runbook'?' &middot; read-only':'')+' &middot; source: '+esc(s.source);
+  $('v-raw').href=s.path;
+  const body=$('v-body');body.innerHTML='<pre><code>Loading&hellip;</code></pre>';
+  modal.classList.add('open');
+  fetch(s.path).then(r=>r.text()).then(txt=>{
+    curText=txt;
+    if(langOf(s.path)==='markdown'&&window.marked){body.innerHTML='<div class="md">'+marked.parse(txt)+'</div>';}
+    else{const lang=langOf(s.path);body.innerHTML='<pre><code class="language-'+lang+'"></code></pre>';
+      const code=body.querySelector('code');code.textContent=txt;if(window.hljs)hljs.highlightElement(code);}
+    body.scrollTop=0;
+  }).catch(()=>{body.innerHTML='<div class="empty">Could not load file.</div>';});
+}
+
+function setBadge(cls,text){$('status-dot').className='dot '+cls;$('status-text').textContent=text;}
+fetch('scripts/manifest.json').then(r=>r.json()).then(d=>{
+  SCRIPTS=d.scripts||[];RUNBOOKS=d.runbooks||[];
+  $('stat-scripts').textContent=SCRIPTS.length;$('stat-runbooks').textContent=RUNBOOKS.length;
+  $('cnt').textContent=SCRIPTS.length;$('gen').textContent=d.generated||'';
+  buildTabs();apply();setBadge('ok','Updated '+(d.generated||''));
+}).catch(()=>{$('grid').innerHTML='<div class="empty">Could not load manifest.json.</div>';});
+
+fetch('agent/last_run.md').then(r=>r.ok?r.text():Promise.reject()).then(md=>{
+  const g=re=>{const m=md.match(re);return m?parseInt(m[1],10):0;};
+  const dm=md.match(/run\s*[-–]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/);const date=dm?dm[1]:'';
+  const broken=g(/Broken sources:\s*\*\*(\d+)/),changed=g(/Changed sources:\s*\*\*(\d+)/);
+  if(broken)setBadge('err','Updated '+date+' · '+broken+' broken');
+  else if(changed)setBadge('warn','Updated '+date+' · '+changed+' changed');
+  else setBadge('ok','All sources OK · '+date);
+}).catch(()=>{});
+</script>
+</body>
+</html>

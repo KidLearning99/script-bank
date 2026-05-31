@@ -1,0 +1,49 @@
+name: Daily Script Auto-Update
+
+# Runs the auto-update agent every day at 06:00 UTC, and on demand.
+on:
+  schedule:
+    - cron: "0 6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: script-bank-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run auto-update agent
+        id: agent
+        env:
+          # Stored as a PRIVATE GitHub Actions secret — never visible in the repo,
+          # the logs, or the published Pages site, even though the repo is public.
+          # Add it in: Settings -> Secrets and variables -> Actions -> New repository secret.
+          # Without it the agent runs in report-only mode (flags drift, no regeneration).
+          OPENROUTER_API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Optional: override the free models (comma-separated).
+          BANK_MODELS: "minimax/minimax-m2.5:free,moonshotai/kimi-k2.6:free"
+        run: |
+          python agent/update_scripts.py || echo "agent_exit=$?" >> "$GITHUB_OUTPUT"
+
+      - name: Commit changes
+        run: |
+          git config user.name  "script-bank-bot"
+          git config user.email "actions@github.com"
+          if [ -n "$(git status --porcelain)" ]; then
+            git add -A
+            git commit -m "chore(agent): daily source check & script refresh [skip ci]"
+            git push
+        
