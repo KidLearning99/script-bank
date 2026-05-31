@@ -3,6 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+<meta http-equiv="Pragma" content="no-cache">
 <title>Enterprise IT Script Bank</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
@@ -336,7 +338,7 @@ $('u-submit').onclick=async()=>{
 // chat
 const chat=$('chat'),chatMsgs=$('chat-msgs'),chatInput=$('chat-input');let history=[],catalog='';
 function updateChatMode(){const m=cfg.worker?'via secure Worker':(cfg.key?'browser key (fallback)':'not configured');$('chat-mode').textContent=m;refreshUploadHint();}
-$('chat-fab').onclick=()=>{chat.classList.add('open');updateChatMode();if(!history.length)addMsg('bot','Hi! Ask me to find a script, explain one, or draft a new read-only script. Try: *"report mailboxes with external forwarding"*.');chatInput.focus();};
+$('chat-fab').onclick=()=>{chat.classList.add('open');updateChatMode();if(!history.length){addMsg('bot','Hi! Ask me to find a script, explain one, or draft a new read-only script. Try: *"report mailboxes with external forwarding"*.');if(!cfg.worker&&!cfg.key)addMsg('sys','⚙ First time: click "configure" below to paste your free OpenRouter key (stored only in this browser).');}chatInput.focus();};
 $('chat-close').onclick=()=>chat.classList.remove('open');
 $('chat-send').onclick=send;chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();send();}});
 chatInput.addEventListener('input',()=>{chatInput.style.height='auto';chatInput.style.height=Math.min(chatInput.scrollHeight,120)+'px';});
@@ -345,7 +347,7 @@ function sysPrompt(){if(!catalog)catalog='SCRIPTS ('+SCRIPTS.length+'):\n'+SCRIP
   return 'You are the Enterprise IT Script Bank assistant. All scripts here are READ-ONLY. Recommend an exact script from the catalog when one fits (name it), explain scripts, or draft new read-only PowerShell/Graph/Bash with comment-based help, least-privilege scopes, and a learn.microsoft.com source. Be concise; use Markdown.\n\n'+catalog;}
 async function send(){
   const text=chatInput.value.trim();if(!text)return;
-  if(!cfg.worker&&!cfg.key){addMsg('sys','Open Settings to connect the Worker (recommended) or add an OpenRouter key.');return;}
+  if(!cfg.worker&&!cfg.key){addMsg('sys','No key found in THIS browser yet. Opening Settings — paste your OpenRouter key (or Worker URL) and Save, then ask again.');$('open-settings').click();return;}
   addMsg('user',text);chatInput.value='';chatInput.style.height='auto';history.push({role:'user',content:text});
   const t=addMsg('bot','…');$('chat-send').disabled=true;
   const msgs=[{role:'system',content:sysPrompt()}].concat(history.slice(-8));
@@ -361,12 +363,12 @@ async function send(){
 }
 // load
 function setBadge(c,t){$('dot').className='dot '+c;$('badge-txt').textContent=t;}
-fetch('scripts/manifest.json').then(r=>r.json()).then(d=>{
+fetch('scripts/manifest.json?v='+Date.now()).then(r=>r.json()).then(d=>{
   SCRIPTS=d.scripts||[];RUNBOOKS=d.runbooks||[];
   $('k-scripts').textContent=SCRIPTS.length;$('k-runbooks').textContent=RUNBOOKS.length;
   buildNav();apply();updateChatMode();setBadge('ok','Updated '+(d.generated||''));
 }).catch(()=>{$('grid').innerHTML='<div class="empty">Could not load manifest.json.</div>';});
-fetch('agent/last_run.md').then(r=>r.ok?r.text():Promise.reject()).then(md=>{
+fetch('agent/last_run.md?v='+Date.now()).then(r=>r.ok?r.text():Promise.reject()).then(md=>{
   const g=re=>{const m=md.match(re);return m?parseInt(m[1],10):0;};const dm=md.match(/run\s*[-–]\s*([0-9]{4}-[0-9]{2}-[0-9]{2})/);const date=dm?dm[1]:'';
   const b=g(/Broken sources:\s*\*\*(\d+)/),c=g(/Changed sources:\s*\*\*(\d+)/);
   if(b)setBadge('err',date+' · '+b+' broken');else if(c)setBadge('warn',date+' · '+c+' changed');else setBadge('ok','Sources OK · '+date);
