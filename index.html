@@ -76,6 +76,36 @@ footer{border-top:1px solid var(--border);padding:22px 0;color:var(--text-faint)
 .v-body .md code{background:var(--surface-3);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12.5px}
 .v-body .md blockquote{border-left:3px solid var(--border);padding-left:12px;color:var(--text-muted);margin:.6em 0}
 .empty{color:var(--text-muted);padding:30px 4px}
+
+/* AI chat */
+.chat-fab{position:fixed;right:22px;bottom:22px;z-index:40;background:linear-gradient(135deg,var(--primary-dim),var(--purple));color:#fff;border:none;border-radius:30px;padding:13px 20px;font-family:var(--font-body);font-weight:600;font-size:14px;cursor:pointer;box-shadow:var(--shadow);display:inline-flex;gap:8px;align-items:center}
+.chat-fab:hover{filter:brightness(1.08)}
+.chat-panel{position:fixed;right:0;top:0;height:100vh;width:min(420px,100%);background:var(--surface);border-left:1px solid var(--border);box-shadow:var(--shadow);z-index:60;display:none;flex-direction:column;transform:translateX(8px)}
+.chat-panel.open{display:flex}
+.chat-head{display:flex;align-items:center;justify-content:space-between;padding:14px 16px;border-bottom:1px solid var(--border)}
+.chat-head .t{font-weight:700;font-size:15px;display:flex;gap:8px;align-items:center}
+.chat-head .s{font-size:11px;color:var(--text-muted);font-family:var(--font-mono)}
+.chat-msgs{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px}
+.msg{max-width:92%;padding:10px 13px;border-radius:12px;font-size:13.5px;line-height:1.55;white-space:pre-wrap;word-wrap:break-word}
+.msg.user{align-self:flex-end;background:var(--primary-dim);color:#fff;border-bottom-right-radius:4px}
+.msg.bot{align-self:flex-start;background:var(--surface-2);border:1px solid var(--border);border-bottom-left-radius:4px}
+.msg.bot code{background:var(--surface-3);padding:1px 5px;border-radius:4px;font-family:var(--font-mono);font-size:12px}
+.msg.bot pre{background:var(--bg);border:1px solid var(--border);border-radius:8px;padding:12px;overflow:auto;margin:8px 0}
+.msg.bot pre code{background:none;padding:0}
+.msg.sys{align-self:center;color:var(--text-muted);font-size:12px;text-align:center}
+.chat-foot{border-top:1px solid var(--border);padding:12px}
+.chat-row{display:flex;gap:8px}
+.chat-row textarea{flex:1;resize:none;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:9px 11px;font-family:var(--font-body);font-size:13.5px;max-height:120px}
+.chat-row textarea:focus{outline:none;border-color:var(--primary)}
+.chat-send{background:var(--primary-dim);color:#fff;border:none;border-radius:var(--radius);padding:0 14px;cursor:pointer;font-weight:600}
+.chat-send:disabled{opacity:.5;cursor:not-allowed}
+.keybar{display:flex;gap:8px;margin-bottom:8px}
+.keybar input{flex:1;background:var(--bg);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);padding:8px 10px;font-family:var(--font-mono);font-size:12px}
+.keybar input:focus{outline:none;border-color:var(--primary)}
+.chat-note{font-size:10.5px;color:var(--text-faint);margin-top:7px;line-height:1.4}
+.chat-note a{color:var(--primary)}
+.modelpick{font-family:var(--font-mono);font-size:11px;color:var(--text-muted);background:var(--bg);border:1px solid var(--border);border-radius:6px;padding:4px 6px}
+@media(max-width:600px){.chat-panel{width:100%}}
 @media(max-width:600px){.hero h1{font-size:25px}}
 </style>
 </head>
@@ -220,6 +250,95 @@ fetch('agent/last_run.md').then(r=>r.ok?r.text():Promise.reject()).then(md=>{
   else if(changed)setBadge('warn','Updated '+date+' · '+changed+' changed');
   else setBadge('ok','All sources OK · '+date);
 }).catch(()=>{});
+
+// ===== AI CHAT (free OpenRouter models, browser-side, user's own key) =====
+const CHAT_MODELS_DEFAULT=['minimax/minimax-m2.5:free','moonshotai/kimi-k2.6:free'];
+const chatPanel=$('chat-panel'), chatMsgs=$('chat-msgs'), chatInput=$('chat-input');
+let chatHistory=[], catalogText='';
+function orKey(){return localStorage.getItem('or_key')||'';}
+function refreshKeyBar(){ const has=!!orKey(); $('keybar').style.display=has?'none':'flex'; if(has)$('or-key').value=''; }
+$('key-save').onclick=()=>{const v=$('or-key').value.trim(); if(v){localStorage.setItem('or_key',v); refreshKeyBar(); addMsg('sys','Key saved in your browser. Ask away.');}};
+$('chat-fab').onclick=()=>{chatPanel.classList.add('open'); refreshKeyBar(); if(!chatHistory.length) addMsg('bot','Hi! I can help you find and explain scripts in this bank, or write new read-only PowerShell / Graph / Bash. What do you need?'); chatInput.focus();};
+$('chat-close').onclick=()=>chatPanel.classList.remove('open');
+chatInput.addEventListener('keydown',e=>{if(e.key==='Enter'&&!e.shiftKey){e.preventDefault();sendChat();}});
+chatInput.addEventListener('input',()=>{chatInput.style.height='auto';chatInput.style.height=Math.min(chatInput.scrollHeight,120)+'px';});
+$('chat-send').onclick=sendChat;
+
+function addMsg(role,text){const d=document.createElement('div');d.className='msg '+role;
+  if(role==='bot'&&window.marked){d.innerHTML=marked.parse(text);} else {d.textContent=text;}
+  chatMsgs.appendChild(d);chatMsgs.scrollTop=chatMsgs.scrollHeight;return d;}
+
+function buildCatalog(){
+  if(catalogText) return catalogText;
+  const lines=SCRIPTS.map(s=>`- ${s.name} [${s.domain}, ${s.type}]: ${s.synopsis} (source: ${s.source})`);
+  catalogText='AVAILABLE SCRIPTS IN THIS BANK ('+SCRIPTS.length+'):\n'+lines.join('\n');
+  return catalogText;
+}
+function systemPrompt(){
+  return 'You are the Enterprise IT Script Bank assistant. You help IT admins find, explain, and adapt scripts. '
+  +'All scripts in this bank are READ-ONLY (reporting/diagnostics; no Set/Remove/New/Disable). '
+  +'When you write new scripts, keep them read-only, include comment-based help, least-privilege Graph scopes, '
+  +'error handling, and cite a learn.microsoft.com source. Prefer recommending an existing script from the catalog '
+  +'below when one fits, naming it exactly and noting its domain. Be concise and use Markdown.\n\n'+buildCatalog();
+}
+
+async function callOR(models,messages){
+  let lastErr='';
+  for(const model of models){
+    try{
+      const r=await fetch('https://openrouter.ai/api/v1/chat/completions',{method:'POST',
+        headers:{'Authorization':'Bearer '+orKey(),'Content-Type':'application/json',
+          'HTTP-Referer':location.origin,'X-Title':'Enterprise IT Script Bank'},
+        body:JSON.stringify({model,messages,max_tokens:1500})});
+      if(!r.ok){lastErr='HTTP '+r.status+' on '+model+(r.status===401?' (check your key)':''); continue;}
+      const d=await r.json(); const t=d.choices&&d.choices[0]&&d.choices[0].message&&d.choices[0].message.content;
+      if(t){$('chat-model').textContent=model.split('/').pop(); return t;}
+    }catch(e){lastErr=String(e);}
+  }
+  throw new Error(lastErr||'all free models failed');
+}
+
+async function sendChat(){
+  const text=chatInput.value.trim(); if(!text) return;
+  if(!orKey()){addMsg('sys','Paste your free OpenRouter key above first.');return;}
+  addMsg('user',text); chatInput.value=''; chatInput.style.height='auto';
+  chatHistory.push({role:'user',content:text});
+  const thinking=addMsg('bot','…'); $('chat-send').disabled=true;
+  const models=$('model-pick').value.split(',');
+  const msgs=[{role:'system',content:systemPrompt()}].concat(chatHistory.slice(-8));
+  try{
+    const reply=await callOR(models,msgs);
+    thinking.innerHTML=window.marked?marked.parse(reply):reply;
+    chatHistory.push({role:'assistant',content:reply});
+  }catch(e){ thinking.className='msg sys'; thinking.textContent='Error: '+e.message; }
+  finally{ $('chat-send').disabled=false; chatMsgs.scrollTop=chatMsgs.scrollHeight; }
+}
+
 </script>
+
+<button class="chat-fab" id="chat-fab">&#129302; Ask AI</button>
+<aside class="chat-panel" id="chat-panel">
+  <div class="chat-head">
+    <div><div class="t">&#129302; Script Bank AI</div><div class="s" id="chat-model">free models</div></div>
+    <button class="btn" id="chat-close">&#10005;</button>
+  </div>
+  <div class="chat-msgs" id="chat-msgs"></div>
+  <div class="chat-foot">
+    <div class="keybar" id="keybar">
+      <input id="or-key" type="password" placeholder="Paste your OpenRouter API key (sk-or-...)">
+      <button class="btn" id="key-save">Save</button>
+    </div>
+    <div class="chat-row">
+      <textarea id="chat-input" rows="1" placeholder="Ask for a script, e.g. 'report inactive Entra users'"></textarea>
+      <button class="chat-send" id="chat-send">&#10148;</button>
+    </div>
+    <select class="modelpick" id="model-pick" style="margin-top:8px;width:100%">
+      <option value="minimax/minimax-m2.5:free,moonshotai/kimi-k2.6:free">MiniMax M2.5 (free) &rarr; Kimi K2.6 (free) fallback</option>
+      <option value="moonshotai/kimi-k2.6:free,minimax/minimax-m2.5:free">Kimi K2.6 (free) &rarr; MiniMax M2.5 (free) fallback</option>
+    </select>
+    <div class="chat-note">Free models via OpenRouter. Your key is stored only in <b>this browser</b> (localStorage) and is never sent to the repo or anyone but OpenRouter. Get a free key at <a href="https://openrouter.ai/keys" target="_blank" rel="noopener">openrouter.ai/keys</a>.</div>
+  </div>
+</aside>
+
 </body>
 </html>
