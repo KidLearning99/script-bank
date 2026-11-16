@@ -1,3 +1,10 @@
 __pycache__/
 *.pyc
 .env
+
+# Secrets: never commit
+.env
+*.pfx
+*.p12
+*.pem
+*.key
