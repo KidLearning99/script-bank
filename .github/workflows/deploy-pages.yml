@@ -5,6 +5,7 @@ on:
   push:
     branches: [main]
   workflow_dispatch:
+  workflow_call:        # also run by the daily auto-update after it commits
 
 permissions:
   contents: read

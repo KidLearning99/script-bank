@@ -16,6 +16,8 @@ concurrency:
 jobs:
   update:
     runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
     steps:
       - name: Checkout
         uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
@@ -39,6 +41,7 @@ jobs:
           python agent/update_scripts.py || echo "agent_exit=$?" >> "$GITHUB_OUTPUT"
 
       - name: Commit changes
+        id: commit
         run: |
           git config user.name  "script-bank-bot"
           git config user.email "actions@github.com"
@@ -46,4 +49,20 @@ jobs:
             git add -A
             git commit -m "chore(agent): daily source check & script refresh [skip ci]"
             git push
-        
+            echo "changed=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "No changes to commit."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+          fi
+
+  # A push made with the workflow's own GITHUB_TOKEN does not trigger other
+  # workflows (and the commit carries [skip ci]), so deploy the site from here
+  # whenever the agent committed something.
+  deploy:
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+    uses: ./.github/workflows/deploy-pages.yml
