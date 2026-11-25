@@ -1,4 +1,4 @@
-# Auto-update run - 2026-11-24
+# Auto-update run - 2026-11-25
 
 - Scripts checked: **152**
 - Broken sources: **4** (Get-EntraConditionalAccessPolicies.ps1, Get-IntuneDeviceCategories.ps1, Get-IntuneEnrollmentFailures.ps1, Get-InstalledDriverInventory.ps1)
